@@ -12,50 +12,54 @@ class AgregarEstacion(QtWidgets.QDialog):
         self.line_edit_nombre = self.findChild(QtWidgets.QLineEdit, 'line_edit_nombre')
         self.line_edit_linea = self.findChild(QtWidgets.QLineEdit, 'line_edit_linea')
         self.line_edit_direccion = self.findChild(QtWidgets.QLineEdit, 'line_edit_direccion')
-        self.line_edit_horario = self.findChild(QtWidgets.QLineEdit, 'line_edit_horario')
-        self.line_edit_campo_extra_cadena = self.findChild(QtWidgets.QLineEdit, 'line_edit_campo_extra_cadena')
-        self.line_edit_campo_extra_numerico = self.findChild(QtWidgets.QLineEdit, 'line_edit_campo_extra_numerico')
 
         self.btn_guardar.clicked.connect(self.guardar_estacion)
 
     def guardar_estacion(self):
-        nombre_estacion = self.line_edit_nombre.text()
-        linea_estacion = self.line_edit_linea.text()
-        direccion = self.line_edit_direccion.text()
-        horario_servicio = self.line_edit_horario.text()
-        campo_extra_cadena = self.line_edit_campo_extra_cadena.text()
-        campo_extra_numerico = self.line_edit_campo_extra_numerico.text()
+        nombre_estacion = self.line_edit_nombre.text().strip()
+        linea_estacion = self.line_edit_linea.text().strip()
+        direccion = self.line_edit_direccion.text().strip()
 
-        if nombre_estacion and linea_estacion and direccion and horario_servicio:
-            self.modificar_yaml(nombre_estacion, linea_estacion, direccion, horario_servicio, campo_extra_cadena, campo_extra_numerico)
+        if nombre_estacion and linea_estacion:
+            self.modificar_yaml(nombre_estacion, linea_estacion, direccion)
             self.accept()  # Cierra el diálogo
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Por favor, completa todos los campos requeridos.")
 
-    def modificar_yaml(self, nombre, linea, direccion, horario_servicio, campo_extra_cadena, campo_extra_numerico):
+    def modificar_yaml(self, nombre, linea, direccion):
         with open("STPMG.yaml", "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file)
+            data = yaml.safe_load(file) or {}
 
-        # Asegúrate de que la clave 'estaciones' exista
-        if 'estaciones' not in data:
-            data['estaciones'] = []
+        # Asegúrate de que la clave 'lineas' exista
+        if 'lineas' not in data:
+            data['lineas'] = []
+
+        # Buscar la línea correspondiente
+        linea_encontrada = next((linea_data for linea_data in data['lineas'] if linea_data['nombre'] == linea), None)
 
         # Si la línea no existe, agregarla
-        if not any(linea_data['nombre'] == linea for linea_data in data['lineas']):
-            data['lineas'].append({'nombre': linea, 'estaciones': []})
+        if not linea_encontrada:
+            linea_encontrada = {'nombre': linea, 'estaciones': []}
+            data['lineas'].append(linea_encontrada)
 
-        # Agregar detalles de la estación
-        data['estaciones'].append({
-            'nombre': nombre,
-            'lineas': [linea],
-            'direccion': direccion,
-            'horario_servicio': horario_servicio,
-            'campo_extra_cadena': campo_extra_cadena,
-            'campo_extra_numerico': campo_extra_numerico
-        })
+        # Si la estación no existe, agregarla a la línea
+        if nombre not in linea_encontrada['estaciones']:
+            linea_encontrada['estaciones'].append(nombre)
+
+        # Ordenar las estaciones para mantener un orden correcto
+        linea_encontrada['estaciones'].sort()
+
+        # Guardar la dirección si es necesario (actualiza el YAML según lo que necesites)
+        # Aquí puedes personalizar cómo deseas manejar la dirección
+        # Por ejemplo, podrías agregarla como un atributo adicional, o definir cómo afecta al grafo.
 
         # Guardar los cambios de vuelta en el archivo YAML
         with open("STPMG.yaml", "w", encoding="utf-8") as file:
             yaml.safe_dump(data, file, allow_unicode=True)
 
-
+# Código para ejecutar la aplicación si es necesario
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = AgregarEstacion()
+    window.show()
+    sys.exit(app.exec_())

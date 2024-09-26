@@ -1,57 +1,59 @@
 lineas:
-  - nombre: "Línea 1"
-    estaciones:
-      - Auditorio
-      - Periférico Norte
-      - Dermatológico
-      - Atemajac
-      - División del Norte
-      - Ávila Camacho
-      - Mezquitán
-      - Refugio
-      - Juárez
-      - Mexicaltzingo
-      - Washington
-      - Santa Filomena
-      - Unidad Deportiva
-      - Urdaneta
-      - 18 de Marzo
-      - Isla Raza
-      - Patria
-      - España
-      - Santuario Mártires de Cristo Rey
-      - Periférico Sur
-
-  - nombre: "Línea 2"
-    estaciones:
-      - Juárez
-      - Plaza Universidad
-      - San Juan de Dios
-      - Belisario Domínguez
-      - Oblatos
-      - Cristóbal de Oñate
-      - San Andrés
-      - San Jacinto
-      - La Aurora
-      - Tetlán
-
-  - nombre: "Línea 3"
-    estaciones:
-      - Arcos de Zapopan
-      - Periférico Belenes
-      - Mercado del Mar
-      - Zapopan Centro
-      - Plaza Patria
-      - Circunvalación Country
-      - Ávila Camacho
-      - La Normal
-      - Santuario
-      - Guadalajara Centro
-      - Independencia
-      - Plaza de la Bandera
-      - CUCEI
-      - Revolución
-      - Río Nilo
-      - Tlaquepaque Centro
-      - Lázaro Cárdenas
-      - Central Camionera
+- estaciones:
+  - Auditorio
+  - Periférico Norte
+  - Dermatológico
+  - Atemajac
+  - División del Norte
+  - Ávila Camacho
+  - Mezquitán
+  - Refugio
+  - Juárez
+  - Mexicaltzingo
+  - Washington
+  - Santa Filomena
+  - Unidad Deportiva
+  - Urdaneta
+  - 18 de Marzo
+  - Isla Raza
+  - Patria
+  - España
+  - Santuario Mártires de Cristo Rey
+  - Periférico Sur
+  nombre: Línea 1
+- estaciones:
+  - Juárez
+  - Plaza Universidad
+  - San Juan de Dios
+  - Belisario Domínguez
+  - Oblatos
+  - Cristóbal de Oñate
+  - San Andrés
+  - San Jacinto
+  - La Aurora
+  - Tetlán
+  nombre: Línea 2
+- estaciones:
+  - Arcos de Zapopan
+  - Periférico Belenes
+  - Mercado del Mar
+  - Zapopan Centro
+  - Plaza Patria
+  - Circunvalación Country
+  - Ávila Camacho
+  - La Normal
+  - Santuario
+  - Guadalajara Centro
+  - Independencia
+  - Plaza de la Bandera
+  - CUCEI
+  - Revolución
+  - Río Nilo
+  - Tlaquepaque Centro
+  - Lázaro Cárdenas
+  - Central Camionera
+  nombre: Línea 3
+- estaciones:
+  - ANTERIR
+  - Nueva
+  nombre: Macro

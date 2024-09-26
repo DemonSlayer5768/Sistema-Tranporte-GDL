@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>434</width>
-    <height>400</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,86 +103,11 @@
    </property>
   </widget>
 
-  <widget class="QLabel" name="label_horario">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>210</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Horario:</string>
-   </property>
-  </widget>
-
-  <widget class="QLineEdit" name="line_edit_horario">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>210</y>
-     <width>200</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-
-  <widget class="QLabel" name="label_campo_extra_cadena">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>260</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Campo Extra (Cadena):</string>
-   </property>
-  </widget>
-
-  <widget class="QLineEdit" name="line_edit_campo_extra_cadena">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>260</y>
-     <width>200</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-
-  <widget class="QLabel" name="label_campo_extra_numerico">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>310</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Campo Extra (Numérico):</string>
-   </property>
-  </widget>
-
-  <widget class="QLineEdit" name="line_edit_campo_extra_numerico">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>310</y>
-     <width>200</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-
   <widget class="QPushButton" name="btn_guardar">
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>350</y>
+     <y>210</y>
      <width>100</width>
      <height>31</height>
     </rect>
