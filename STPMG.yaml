@@ -1,59 +1,230 @@
-lineas:
-- estaciones:
-  - Auditorio
-  - Periférico Norte
-  - Dermatológico
-  - Atemajac
-  - División del Norte
-  - Ávila Camacho
-  - Mezquitán
-  - Refugio
-  - Juárez
-  - Mexicaltzingo
-  - Washington
-  - Santa Filomena
-  - Unidad Deportiva
-  - Urdaneta
-  - 18 de Marzo
-  - Isla Raza
-  - Patria
-  - España
-  - Santuario Mártires de Cristo Rey
-  - Periférico Sur
-  nombre: Línea 1
-- estaciones:
-  - Juárez
-  - Plaza Universidad
-  - San Juan de Dios
-  - Belisario Domínguez
-  - Oblatos
-  - Cristóbal de Oñate
-  - San Andrés
-  - San Jacinto
-  - La Aurora
-  - Tetlán
-  nombre: Línea 2
-- estaciones:
-  - Arcos de Zapopan
-  - Periférico Belenes
-  - Mercado del Mar
-  - Zapopan Centro
-  - Plaza Patria
-  - Circunvalación Country
-  - Ávila Camacho
-  - La Normal
-  - Santuario
-  - Guadalajara Centro
-  - Independencia
-  - Plaza de la Bandera
-  - CUCEI
-  - Revolución
-  - Río Nilo
-  - Tlaquepaque Centro
-  - Lázaro Cárdenas
-  - Central Camionera
-  nombre: Línea 3
-- estaciones:
-  - ANTERIR
-  - Nueva
-  nombre: Macro
+- Nombre: "Auditorio"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Periférico Norte"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Dermatológico"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Atemajac"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "División del Norte"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Ávila Camacho"
+  Lineas: ["Linea 1", "Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Mezquitán"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Refugio"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Juárez"
+  Lineas: ["Linea 1", "Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Mexicaltzingo"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Washington"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Santa Filomena"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Unidad Deportiva"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Urdaneta"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "18 de Marzo"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Isla Raza"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Patria"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "España"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Santuario Mártires de Cristo Rey"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Periférico Sur"
+  Lineas: ["Linea 1"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Plaza Universidad"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "San Juan de Dios"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Belisario Domínguez"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Oblatos"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Cristóbal de Oñate"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "San Andrés"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "San Jacinto"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "La Aurora"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Tetlán"
+  Lineas: ["Linea 2"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Arcos de Zapopan"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Periférico Belenes"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Mercado del Mar"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Zapopan Centro"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Plaza Patria"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Circunvalación Country"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "La Normal"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Santuario"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Guadalajara Centro"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Independencia"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Plaza de la Bandera"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "CUCEI"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Revolución"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Río Nilo"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Tlaquepaque Centro"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Lázaro Cárdenas"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+- Nombre: "Central Camionera"
+  Lineas: ["Linea 3"]
+  Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0

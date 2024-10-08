@@ -1,8 +1,9 @@
 import sys
-import yaml
-from PyQt5 import QtWidgets, uic 
+import yaml  # type: ignore
+from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QStringListModel
-from AgregarEstacion import AgregarEstacion
+from TrfmAgregar import AgregarEstacion
+from TfrmEliminar import EliminarEstacion_Linea
 
 
 class Nodo:
@@ -11,12 +12,12 @@ class Nodo:
         self.Next = None
         self.anterior = None
 
+
 class Estacion:
-    def __init__(self, nombre, lineas, direccion, horario_servicio, campo_extra_cadena, campo_extra_numerico):
+    def __init__(self, nombre, lineas, direccion, campo_extra_cadena, campo_extra_numerico):
         self.nombre = nombre
         self.lineas = lineas
         self.direccion = direccion
-        self.horario_servicio = horario_servicio
         self.campo_extra_cadena = campo_extra_cadena
         self.campo_extra_numerico = campo_extra_numerico
 
@@ -24,8 +25,7 @@ class Estacion:
         print(f"Línea(s): {', '.join(self.lineas)}")
         print(f"Estación: {self.nombre}")
         print(f"Siguiente estación: {self.direccion}")
-        print(f"Horario de Servicio: {self.horario_servicio}")
-        print()
+
 
 class GrafoTransporte:
     def __init__(self):
@@ -39,25 +39,22 @@ class GrafoTransporte:
         with open(file_path, "r", encoding="utf-8") as file:
             data = yaml.safe_load(file)
 
-        for linea_data in data['lineas']:
-            nombre_linea = linea_data['nombre']
-            estaciones = linea_data['estaciones']
-            self.CreateEstations(estaciones, nombre_linea)
+        # Asumiendo que data es una lista de estaciones
+        for estacion_data in data:
+            nombre_estacion = estacion_data["Nombre"]
+            lineas = estacion_data["Lineas"]
+            direccion = estacion_data["Direccion"]
+            campo_extra_cadena = estacion_data["ExtraCadena"]
+            campo_extra_numerico = estacion_data["ExtraNumerico"]
 
-    def CreateEstations(self, nombres, linea):
-        # Crear una lista para almacenar las estaciones de esta línea
-        estaciones_linea = []
-        
-        for i, Name in enumerate(nombres):
-            direccion = nombres[i + 1] if i < len(nombres) - 1 else f"Fin de la línea ({linea})"
             nueva_estacion = Estacion(
-                nombre=Name,
-                lineas=[linea],
+                nombre=nombre_estacion,
+                lineas=lineas,
                 direccion=direccion,
-                horario_servicio="De 5:00 AM a 11:00 PM",
-                campo_extra_cadena="N/A",
-                campo_extra_numerico=0
+                campo_extra_cadena=campo_extra_cadena,
+                campo_extra_numerico=campo_extra_numerico
             )
+
             NewNodo = Nodo(nueva_estacion)
 
             if self.Head is None:
@@ -68,13 +65,14 @@ class GrafoTransporte:
                 NewNodo.anterior = self.cola
                 self.cola = NewNodo
 
-            # Añadir la estación a la lista de estaciones de esta línea
-            estaciones_linea.append(Name)
-            self.NameStations[Name] = NewNodo
+            # Añadir la estación al diccionario
+            self.NameStations[nombre_estacion] = NewNodo
 
-        # Almacenar solo las estaciones de esta línea
-        self.NameLine[linea] = estaciones_linea
-
+            # Agregar las estaciones a las líneas
+            for linea in lineas:
+                if linea not in self.NameLine:
+                    self.NameLine[linea] = []
+                self.NameLine[linea].append(nombre_estacion)
 
 class TransporteApp(QtWidgets.QMainWindow):
     def __init__(self):
@@ -84,14 +82,15 @@ class TransporteApp(QtWidgets.QMainWindow):
         # Crear la instancia de GrafoTransporte
         self.grafo_transporte = GrafoTransporte()
 
-        # Agregar líneas al ComboBox
         self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))
 
         # Conectar el botón a la función
         self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
-        
-          # Conectar el botón de crear estación a la función
+
+        # Conectar el botón de crear estación a la función
         self.btn_creaEstacion.clicked.connect(self.abrir_crear_estacion)
+        # Conectar el botón de eliminar la estación
+        self.btn_Eliminar_Estacion.clicked.connect(self.Eliminar_Estacion)
 
         # Crear el modelo para QListView
         self.estaciones_model = QStringListModel(self)
@@ -102,34 +101,27 @@ class TransporteApp(QtWidgets.QMainWindow):
         print(f"Línea seleccionada: {linea_seleccionada}")
         self.manejar_seleccion(linea_seleccionada)
 
-
     def manejar_seleccion(self, linea):
-        # Obtener las estaciones de la línea seleccionada
         estaciones = self.grafo_transporte.NameLine.get(linea, [])
-        print(f"Estaciones para {linea}: {', '.join(estaciones)}")
-
-        # Limpiar el modelo de la lista
-        self.clearListView()  # Limpiar la lista antes de agregar las nuevas estaciones
-        print("Limpiando lista...")
-
-        # Ahora actualizar el modelo con las estaciones de la línea seleccionada
+        self.clearListView()
         self.estaciones_model.setStringList(estaciones)
-
-        # Verificar que las estaciones nuevas se hayan añadido correctamente
-        print(f"Contenido nuevo de la lista: {self.estaciones_model.stringList()}")
+        print(f"Estación {linea}: {self.estaciones_model.stringList()}")
 
     def clearListView(self):
-        # Método para limpiar la lista
-        self.estaciones_model.setStringList([])  # Esto limpia la lista vaciándola
-
-        # Asegurarse de que el modelo esté vinculado al QListView
+        self.estaciones_model.setStringList([])
         self.listView.setModel(self.estaciones_model)
-
-
 
     def abrir_crear_estacion(self):
         # Crear y mostrar la ventana de crear estación
         self.crear_estacion_window = AgregarEstacion(self)
+        if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
+            self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
+            self.comboBox.clear()  # Limpiar el ComboBox
+            self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))  # Actualizar las líneas
+
+    def Eliminar_Estacion(self):
+        # Crear y mostrar la ventana de eliminar estación
+        self.crear_estacion_window = EliminarEstacion_Linea(self)
         if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
             self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
             self.comboBox.clear()  # Limpiar el ComboBox

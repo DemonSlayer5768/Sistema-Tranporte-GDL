@@ -1,5 +1,5 @@
 import sys
-import yaml
+import yaml # type: ignore
 from PyQt5 import QtWidgets, uic
 
 class AgregarEstacion(QtWidgets.QDialog):
@@ -7,7 +7,6 @@ class AgregarEstacion(QtWidgets.QDialog):
         super(AgregarEstacion, self).__init__(parent)
         uic.loadUi('interfaces/AgregarEstacion.ui', self)
 
-        # Conectar el botón de guardar a la función
         self.btn_guardar = self.findChild(QtWidgets.QPushButton, 'btn_guardar')
         self.line_edit_nombre = self.findChild(QtWidgets.QLineEdit, 'line_edit_nombre')
         self.line_edit_linea = self.findChild(QtWidgets.QLineEdit, 'line_edit_linea')
@@ -49,9 +48,6 @@ class AgregarEstacion(QtWidgets.QDialog):
         # Ordenar las estaciones para mantener un orden correcto
         linea_encontrada['estaciones'].sort()
 
-        # Guardar la dirección si es necesario (actualiza el YAML según lo que necesites)
-        # Aquí puedes personalizar cómo deseas manejar la dirección
-        # Por ejemplo, podrías agregarla como un atributo adicional, o definir cómo afecta al grafo.
 
         # Guardar los cambios de vuelta en el archivo YAML
         with open("STPMG.yaml", "w", encoding="utf-8") as file:

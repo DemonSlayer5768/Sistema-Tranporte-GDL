@@ -38,7 +38,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Nombre:</string>
+    <string>Nombre:</string>  
    </property>
   </widget>
   
