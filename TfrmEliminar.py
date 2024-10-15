@@ -130,7 +130,7 @@ class EliminarEstacion_Linea(QtWidgets.QDialog):
             with open("STPMG.yaml", "w", encoding="utf-8") as file:
                 yaml.safe_dump(data, file, allow_unicode=True)
 
-            QtWidgets.QMessageBox.information(self, "Eliminar Línea", f"Línea '{selected_line}' eliminada por completo.")
+            QtWidgets.QMessageBox.information(self, "La Línea", f"<b>'{selected_line}'</b> fue eliminada por completo.")
 
             # Refrescar los ComboBoxes de líneas y estaciones
             self.load_lines()

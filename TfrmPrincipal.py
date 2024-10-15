@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml  # type: ignore
+import time  
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QStringListModel
 from TrfmAgregar import AgregarEstacion
@@ -19,6 +20,8 @@ class TransporteApp(QtWidgets.QMainWindow):
 
         # Conectar el botón a la función
         self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
+        self.btn_BuscarEstacion.clicked.connect(self.OrdenamientoInsercion)
+
 
         # Conectar el botón de crear estación a la función
         self.btn_creaEstacion.clicked.connect(self.abrir_crear_estacion)
@@ -32,11 +35,7 @@ class TransporteApp(QtWidgets.QMainWindow):
     def obtener_seleccion(self):
         linea_seleccionada = self.comboBox.currentText()
         print(f"Línea seleccionada: {linea_seleccionada}")
-
-        # Cargar el archivo YAML para obtener la información más reciente
         self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Refrescar los datos desde el archivo
-
-        # Manejar la selección
         self.manejar_seleccion(linea_seleccionada)
 
     def manejar_seleccion(self, linea):
@@ -46,6 +45,53 @@ class TransporteApp(QtWidgets.QMainWindow):
 
     def clearListView(self):
         self.estaciones_model.setStringList([])
+    
+    def OrdenamientoInsercion(self):
+        linea_seleccionada = self.comboBox.currentText()  # Obtener la línea seleccionada
+        estaciones = self.grafo_transporte.NameLine.get(linea_seleccionada, [])  # Obtener las estaciones de esa línea
+
+        # Medir el tiempo de ejecución
+        start_time = time.time()
+
+        # Algoritmo de ordenamiento por inserción
+        for i in range(1, len(estaciones)):
+            key = estaciones[i]
+            j = i - 1
+            while j >= 0 and key < estaciones[j]:  # Comparar los nombres de las estaciones
+                estaciones[j + 1] = estaciones[j]
+                j -= 1
+            estaciones[j + 1] = key
+
+        # Mostrar el tiempo transcurrido
+        elapsed_time = time.time() - start_time
+        print(f"Estaciones ordenadas por nombre en la línea {linea_seleccionada}: {estaciones}")
+        print(f"Tiempo de ordenamiento: {elapsed_time:.6f} segundos")
+
+        # Mostrar estaciones ordenadas en el QListView
+        self.estaciones_model.setStringList(estaciones)  # Mostrar los nombres ordenados  
+    # def ordenar_estaciones_por_nombre(self):
+    #     estaciones = self.grafo_transporte.get_all_estaciones()
+        
+    #     # Medir el tiempo de ejecución
+    #     start_time = time.time()
+
+    #     # Algoritmo de ordenamiento por inserción
+    #     for i in range(1, len(estaciones)):
+    #         key = estaciones[i]
+    #         j = i - 1
+    #         while j >= 0 and key.nombre < estaciones[j].nombre:
+    #             estaciones[j + 1] = estaciones[j]
+    #             j -= 1
+    #         estaciones[j + 1] = key
+
+    #     # Mostrar el tiempo transcurrido
+    #     elapsed_time = time.time() - start_time
+    #     print(f"Estaciones ordenadas por nombre: {[estacion.nombre for estacion in estaciones]}")
+    #     print(f"Tiempo de ordenamiento: {elapsed_time:.6f} segundos")
+
+    #     # Mostrar estaciones ordenadas en el QListView
+    #     estaciones_ordenadas = [estacion.nombre for estacion in estaciones]
+    #     self.estaciones_model.setStringList(estaciones_ordenadas)
 
     def abrir_crear_estacion(self):
         # Crear y mostrar la ventana de crear estación
@@ -77,12 +123,23 @@ class Estacion:
         self.campo_extra_cadena = campo_extra_cadena
         self.campo_extra_numerico = campo_extra_numerico
 
-    def ShowInfo(self):
-        print(f"Línea(s): {', '.join(self.lineas)}")
-        print(f"Estación: {self.nombre}")
-        print(f"Siguiente estación: {self.direccion}")
+    # def ShowInfo(self):
+    #     print(f"Línea(s): {', '.join(self.lineas)}")
+    #     print(f"Estación: {self.nombre}")
+    #     print(f"Direccion: {self.direccion}")
+    #     print(f"Campo Cadena: {self.campo_extra_cadena}")
+    #     print(f"campo Numerico: {self.campo_extra_numerico}")
+        
 
 class GrafoTransporte:
+    def get_all_estaciones(self):
+        estaciones = []
+        current_node = self.Head
+        while current_node is not None:
+            estaciones.append(current_node.estacion)
+            current_node = current_node.Next
+        return estaciones
+
     def __init__(self):
         self.NameStations = {}
         self.NameLine = {}
@@ -108,10 +165,9 @@ class GrafoTransporte:
                 print(f"Error al leer el archivo YAML: {exc}")
                 data = []
 
-        # Asumiendo que data es una lista de estaciones
         if isinstance(data, list):
             for estacion_data in data:
-                if isinstance(estacion_data, dict):  # Asegurarse de que sea un diccionario
+                if isinstance(estacion_data, dict):  
                     nombre_estacion = estacion_data.get("Nombre")
                     lineas = estacion_data.get("Lineas", [])
                     direccion = estacion_data.get("Direccion", "")
@@ -137,10 +193,8 @@ class GrafoTransporte:
                             NewNodo.anterior = self.cola
                             self.cola = NewNodo
 
-                        # Añadir la estación al diccionario
                         self.NameStations[nombre_estacion] = NewNodo
 
-                        # Agregar las estaciones a las líneas
                         for linea in lineas:
                             if linea not in self.NameLine:
                                 self.NameLine[linea] = []

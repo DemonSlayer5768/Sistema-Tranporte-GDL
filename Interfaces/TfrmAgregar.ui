@@ -16,6 +16,18 @@
     <height>16777215</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>411</width>
+    <height>439</height>
+   </size>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>411</width>
+    <height>439</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Agregar Estación</string>
   </property>

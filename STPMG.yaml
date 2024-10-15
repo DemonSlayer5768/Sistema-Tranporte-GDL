@@ -38,6 +38,7 @@
   ExtraNumerico: 0
   Lineas:
     - Linea1
+    - Linea3
   Nombre: Ávila Camacho
 
 - Direccion: ""
@@ -249,13 +250,6 @@
   Lineas:
     - Linea3
   Nombre: Circunvalación Country
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Ávila Camacho
 
 - Direccion: ""
   ExtraCadena: ""
