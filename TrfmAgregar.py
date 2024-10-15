@@ -1,5 +1,5 @@
 import sys
-import yaml # type: ignore
+import yaml  # type: ignore
 from PyQt5 import QtWidgets, uic
 
 class AgregarEstacion(QtWidgets.QDialog):
@@ -7,53 +7,80 @@ class AgregarEstacion(QtWidgets.QDialog):
         super(AgregarEstacion, self).__init__(parent)
         uic.loadUi('interfaces/AgregarEstacion.ui', self)
 
+        # Conectar los widgets del formulario
         self.btn_guardar = self.findChild(QtWidgets.QPushButton, 'btn_guardar')
-        self.line_edit_nombre = self.findChild(QtWidgets.QLineEdit, 'line_edit_nombre')
-        self.line_edit_linea = self.findChild(QtWidgets.QLineEdit, 'line_edit_linea')
-        self.line_edit_direccion = self.findChild(QtWidgets.QLineEdit, 'line_edit_direccion')
+        self.Tedit_Nombre = self.findChild(QtWidgets.QLineEdit, 'Tedit_Nombre')
+        self.Tedit_Linea = self.findChild(QtWidgets.QLineEdit, 'Tedit_Linea')
+        self.Tedit_Direccion = self.findChild(QtWidgets.QLineEdit, 'Tedit_Direccion')
+        self.Tedit_EC = self.findChild(QtWidgets.QLineEdit, 'Tedit_EC')
+        self.Tedit_EN = self.findChild(QtWidgets.QLineEdit, 'Tedit_EN')
 
+        # Conectar el botón de guardar con la función correspondiente
         self.btn_guardar.clicked.connect(self.guardar_estacion)
 
     def guardar_estacion(self):
-        nombre_estacion = self.line_edit_nombre.text().strip()
-        linea_estacion = self.line_edit_linea.text().strip()
-        direccion = self.line_edit_direccion.text().strip()
+        # Obtener los datos ingresados por el usuario
+        nombre_estacion = self.Tedit_Nombre.text().strip()
+        linea_estacion = self.Tedit_Linea.text().strip()
+        direccion = self.Tedit_Direccion.text().strip()
+        ExtraCadena = self.Tedit_EC.text().strip()
+        ExtraNumerico = self.Tedit_EN.text().strip()
 
+        # Validación para asegurarse de que los campos requeridos no estén vacíos
         if nombre_estacion and linea_estacion:
-            self.modificar_yaml(nombre_estacion, linea_estacion, direccion)
-            self.accept()  # Cierra el diálogo
+            # Validar si ExtraNumerico es realmente un número
+            if ExtraNumerico.isdigit():
+                ExtraNumerico = int(ExtraNumerico)
+                self.modificar_yaml(nombre_estacion, linea_estacion, direccion, ExtraCadena, ExtraNumerico)
+                self.accept()  # Cierra el diálogo después de guardar
+            else:
+                QtWidgets.QMessageBox.warning(self, "Error", "El campo 'Extra Numerico' debe ser un número.")
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Por favor, completa todos los campos requeridos.")
 
-    def modificar_yaml(self, nombre, linea, direccion):
-        with open("STPMG.yaml", "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file) or {}
+    def modificar_yaml(self, nombre, linea, direccion, ExtraCadena, ExtraNumerico):
+        # Cargar el archivo YAML
+        try:
+            with open("STPMG.yaml", "r", encoding="utf-8") as file:
+                data = yaml.safe_load(file) or []
+        except FileNotFoundError:
+            # Si el archivo no existe, inicializar una lista vacía
+            data = []
 
-        # Asegúrate de que la clave 'lineas' exista
-        if 'lineas' not in data:
-            data['lineas'] = []
+        # Verificar si la estación ya existe
+        estacion_existente = next((estacion for estacion in data if estacion['Nombre'] == nombre), None)
 
-        # Buscar la línea correspondiente
-        linea_encontrada = next((linea_data for linea_data in data['lineas'] if linea_data['nombre'] == linea), None)
+        if estacion_existente:
+            # Si la estación existe, actualizar su información
+            estacion_existente['Direccion'] = direccion
+            estacion_existente['ExtraCadena'] = ExtraCadena
+            estacion_existente['ExtraNumerico'] = ExtraNumerico
 
-        # Si la línea no existe, agregarla
-        if not linea_encontrada:
-            linea_encontrada = {'nombre': linea, 'estaciones': []}
-            data['lineas'].append(linea_encontrada)
+            # Si la línea no está en la lista de líneas de la estación, agregarla
+            if linea not in estacion_existente['Lineas']:
+                estacion_existente['Lineas'].append(linea)
+        else:
+            # Si la estación no existe, agregarla
+            nueva_estacion = {
+                'Nombre': nombre,
+                'Lineas': [linea],
+                'Direccion': direccion,
+                'ExtraCadena': ExtraCadena,
+                'ExtraNumerico': ExtraNumerico
+            }
+            data.append(nueva_estacion)
 
-        # Si la estación no existe, agregarla a la línea
-        if nombre not in linea_encontrada['estaciones']:
-            linea_encontrada['estaciones'].append(nombre)
+        # Ordenar las estaciones alfabéticamente por nombre
+        data.sort(key=lambda x: x['Nombre'])
 
-        # Ordenar las estaciones para mantener un orden correcto
-        linea_encontrada['estaciones'].sort()
-
-
-        # Guardar los cambios de vuelta en el archivo YAML
+        # Guardar el archivo YAML actualizado
         with open("STPMG.yaml", "w", encoding="utf-8") as file:
             yaml.safe_dump(data, file, allow_unicode=True)
 
-# Código para ejecutar la aplicación si es necesario
+        print(f"Estación '{nombre}' modificada o agregada correctamente.")
+
+
+# Código para ejecutar la aplicación
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = AgregarEstacion()

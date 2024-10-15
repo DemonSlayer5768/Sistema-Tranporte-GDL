@@ -1,3 +1,4 @@
+import os
 import sys
 import yaml  # type: ignore
 from PyQt5 import QtWidgets, uic
@@ -5,13 +6,11 @@ from PyQt5.QtCore import QStringListModel
 from TrfmAgregar import AgregarEstacion
 from TfrmEliminar import EliminarEstacion_Linea
 
-
 class Nodo:
     def __init__(self, estacion):
         self.estacion = estacion
         self.Next = None
         self.anterior = None
-
 
 class Estacion:
     def __init__(self, nombre, lineas, direccion, campo_extra_cadena, campo_extra_numerico):
@@ -26,7 +25,6 @@ class Estacion:
         print(f"Estación: {self.nombre}")
         print(f"Siguiente estación: {self.direccion}")
 
-
 class GrafoTransporte:
     def __init__(self):
         self.NameStations = {}
@@ -36,43 +34,65 @@ class GrafoTransporte:
         self.LoadFromYAML("STPMG.yaml")
 
     def LoadFromYAML(self, file_path):
+        self.NameStations.clear()
+        self.NameLine.clear()
+        # Verificar si el archivo existe
+        if not os.path.exists(file_path):
+            # Crear un archivo YAML vacío si no existe
+            with open(file_path, "w", encoding="utf-8") as file:
+                yaml.dump([], file)
+            print(f"Archivo {file_path} creado porque no existía.")
+
+        # Leer el archivo YAML (aunque esté vacío)
         with open(file_path, "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file)
+            try:
+                data = yaml.safe_load(file) or []  # Cargar YAML y manejar si está vacío
+            except yaml.YAMLError as exc:
+                print(f"Error al leer el archivo YAML: {exc}")
+                data = []
 
         # Asumiendo que data es una lista de estaciones
-        for estacion_data in data:
-            nombre_estacion = estacion_data["Nombre"]
-            lineas = estacion_data["Lineas"]
-            direccion = estacion_data["Direccion"]
-            campo_extra_cadena = estacion_data["ExtraCadena"]
-            campo_extra_numerico = estacion_data["ExtraNumerico"]
+        if isinstance(data, list):
+            for estacion_data in data:
+                if isinstance(estacion_data, dict):  # Asegurarse de que sea un diccionario
+                    nombre_estacion = estacion_data.get("Nombre")
+                    lineas = estacion_data.get("Lineas", [])
+                    direccion = estacion_data.get("Direccion", "")
+                    campo_extra_cadena = estacion_data.get("ExtraCadena", "")
+                    campo_extra_numerico = estacion_data.get("ExtraNumerico", 0)
 
-            nueva_estacion = Estacion(
-                nombre=nombre_estacion,
-                lineas=lineas,
-                direccion=direccion,
-                campo_extra_cadena=campo_extra_cadena,
-                campo_extra_numerico=campo_extra_numerico
-            )
+                    if nombre_estacion:  # Solo procesar si el nombre de la estación existe
+                        nueva_estacion = Estacion(
+                            nombre=nombre_estacion,
+                            lineas=lineas,
+                            direccion=direccion,
+                            campo_extra_cadena=campo_extra_cadena,
+                            campo_extra_numerico=campo_extra_numerico
+                        )
 
-            NewNodo = Nodo(nueva_estacion)
+                        NewNodo = Nodo(nueva_estacion)
 
-            if self.Head is None:
-                self.Head = NewNodo
-                self.cola = NewNodo
-            else:
-                self.cola.Next = NewNodo
-                NewNodo.anterior = self.cola
-                self.cola = NewNodo
+                        if self.Head is None:
+                            self.Head = NewNodo
+                            self.cola = NewNodo
+                        else:
+                            self.cola.Next = NewNodo
+                            NewNodo.anterior = self.cola
+                            self.cola = NewNodo
 
-            # Añadir la estación al diccionario
-            self.NameStations[nombre_estacion] = NewNodo
+                        # Añadir la estación al diccionario
+                        self.NameStations[nombre_estacion] = NewNodo
 
-            # Agregar las estaciones a las líneas
-            for linea in lineas:
-                if linea not in self.NameLine:
-                    self.NameLine[linea] = []
-                self.NameLine[linea].append(nombre_estacion)
+                        # Agregar las estaciones a las líneas
+                        for linea in lineas:
+                            if linea not in self.NameLine:
+                                self.NameLine[linea] = []
+                            self.NameLine[linea].append(nombre_estacion)
+                else:
+                    print("Dato inválido encontrado en el archivo YAML.")
+        else:
+            print("El archivo YAML no contiene una lista válida de estaciones.")
+
 
 class TransporteApp(QtWidgets.QMainWindow):
     def __init__(self):
@@ -99,17 +119,20 @@ class TransporteApp(QtWidgets.QMainWindow):
     def obtener_seleccion(self):
         linea_seleccionada = self.comboBox.currentText()
         print(f"Línea seleccionada: {linea_seleccionada}")
+
+        # Cargar el archivo YAML para obtener la información más reciente
+        self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Refrescar los datos desde el archivo
+
+        # Manejar la selección
         self.manejar_seleccion(linea_seleccionada)
 
     def manejar_seleccion(self, linea):
         estaciones = self.grafo_transporte.NameLine.get(linea, [])
         self.clearListView()
         self.estaciones_model.setStringList(estaciones)
-        print(f"Estación {linea}: {self.estaciones_model.stringList()}")
 
     def clearListView(self):
         self.estaciones_model.setStringList([])
-        self.listView.setModel(self.estaciones_model)
 
     def abrir_crear_estacion(self):
         # Crear y mostrar la ventana de crear estación

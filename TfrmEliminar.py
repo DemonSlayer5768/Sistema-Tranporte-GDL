@@ -1,5 +1,5 @@
 import sys
-import yaml # type: ignore
+import yaml  # type: ignore
 from PyQt5 import QtWidgets, uic
 
 class EliminarEstacion_Linea(QtWidgets.QDialog):
@@ -7,51 +7,117 @@ class EliminarEstacion_Linea(QtWidgets.QDialog):
         super(EliminarEstacion_Linea, self).__init__(parent)
         uic.loadUi('interfaces/TfrmBorrarEstacion_Linea.ui', self)
 
-        # self.btn_guardar = self.findChild(QtWidgets.QPushButton, 'btn_guardar')
-        # self.line_edit_nombre = self.findChild(QtWidgets.QLineEdit, 'line_edit_nombre')
-        # self.line_edit_linea = self.findChild(QtWidgets.QLineEdit, 'line_edit_linea')
-        # self.line_edit_direccion = self.findChild(QtWidgets.QLineEdit, 'line_edit_direccion')
+        # Access ComboBoxes and buttons
+        self.cmb_Linea = self.findChild(QtWidgets.QComboBox, 'cmb_Linea')
+        self.cmb_Estacion = self.findChild(QtWidgets.QComboBox, 'cmb_Estacion')
+        self.btnEliminar_Estacion = self.findChild(QtWidgets.QPushButton, 'btnEliminar_Estacion')
+        self.btnEliminar_Linea = self.findChild(QtWidgets.QPushButton, 'btnEliminar_Linea')
 
-        # self.btn_guardar.clicked.connect(self.guardar_estacion)
+        # Load lines into cmb_Linea on form load
+        self.load_lines()
 
-    def guardar_estacion(self):
-        nombre_estacion = self.line_edit_nombre.text().strip()
-        linea_estacion = self.line_edit_linea.text().strip()
-        direccion = self.line_edit_direccion.text().strip()
+        # Connect signals
+        self.cmb_Linea.currentIndexChanged.connect(self.load_stations)
+        self.btnEliminar_Estacion.clicked.connect(self.eliminar_estacion)
+        self.btnEliminar_Linea.clicked.connect(self.eliminar_linea)
 
-        if nombre_estacion and linea_estacion:
-            self.modificar_yaml(nombre_estacion, linea_estacion, direccion)
-            self.accept()  # Cierra el diálogo
-        else:
-            QtWidgets.QMessageBox.warning(self, "Error", "Por favor, completa todos los campos requeridos.")
-
-    def modificar_yaml(self, nombre, linea, direccion):
+    def load_lines(self):
+        """Load all available lines from the YAML file into cmb_Linea, ensuring no duplicate lines."""
         with open("STPMG.yaml", "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file) or {}
+            data = yaml.safe_load(file) or []
 
-        # Asegúrate de que la clave 'lineas' exista
-        if 'lineas' not in data:
-            data['lineas'] = []
+        # Create a set to store unique lines
+        unique_lines = set()
 
-        # Buscar la línea correspondiente
-        linea_encontrada = next((linea_data for linea_data in data['lineas'] if linea_data['nombre'] == linea), None)
+        # Assuming 'Lineas' is a key in the YAML structure
+        for estacion_data in data:
+            lineas = estacion_data.get('Lineas', [])
+            unique_lines.update(lineas)  # Add lines to the set (automatically handles duplicates)
 
-        # Si la línea no existe, agregarla
-        if not linea_encontrada:
-            linea_encontrada = {'nombre': linea, 'estaciones': []}
-            data['lineas'].append(linea_encontrada)
+        # Clear existing items in the ComboBox
+        self.cmb_Linea.clear()
 
-        # Si la estación no existe, agregarla a la línea
-        if nombre not in linea_encontrada['estaciones']:
-            linea_encontrada['estaciones'].append(nombre)
-
-        # Ordenar las estaciones para mantener un orden correcto
-        linea_encontrada['estaciones'].sort()
+        # Add the sorted unique lines to the ComboBox
+        self.cmb_Linea.addItems(sorted(unique_lines))
 
 
-        # Guardar los cambios de vuelta en el archivo YAML
+    def load_stations(self):
+        """Load the stations of the selected line into cmb_Estacion."""
+        selected_line = self.cmb_Linea.currentText()
+
+        # Clear existing stations in cmb_Estacion
+        self.cmb_Estacion.clear()
+
+        with open("STPMG.yaml", "r", encoding="utf-8") as file:
+            data = yaml.safe_load(file) or []
+
+        for estacion_data in data:
+            if selected_line in estacion_data.get('Lineas', []):
+                # Add stations to cmb_Estacion
+                self.cmb_Estacion.addItem(estacion_data.get('Nombre'))
+
+    def eliminar_estacion(self):
+        """Delete the selected station from the line."""
+        selected_line = self.cmb_Linea.currentText()
+        selected_station = self.cmb_Estacion.currentText()
+
+        with open("STPMG.yaml", "r", encoding="utf-8") as file:
+            data = yaml.safe_load(file) or []
+
+        # Find the station and remove it
+        for estacion_data in data:
+            if selected_station == estacion_data.get('Nombre') and selected_line in estacion_data.get('Lineas', []):
+                estacion_data['Lineas'].remove(selected_line)
+
+                # If the station no longer has any lines, remove the station completely
+                if not estacion_data['Lineas']:
+                    data.remove(estacion_data)
+
+        # Save updated data
         with open("STPMG.yaml", "w", encoding="utf-8") as file:
             yaml.safe_dump(data, file, allow_unicode=True)
+
+        QtWidgets.QMessageBox.information(self, "Eliminar Estación", f"Estación '{selected_station}' eliminada de la línea '{selected_line}'.")
+
+        # Refresh the station ComboBox
+        self.load_stations()
+
+
+    def eliminar_linea(self):
+        """Delete the entire line and its associated stations if no longer linked to any other lines."""
+        selected_line = self.cmb_Linea.currentText()
+
+        with open("STPMG.yaml", "r", encoding="utf-8") as file:
+            data = yaml.safe_load(file) or []
+
+        # Remove the selected line from all stations and collect stations to remove
+        stations_to_remove = []
+        for estacion_data in data:
+            if selected_line in estacion_data.get('Lineas', []):
+                estacion_data['Lineas'].remove(selected_line)  # Remove the line from the station
+                
+                # If the station no longer has any lines, mark it for removal
+                if not estacion_data['Lineas']:
+                    stations_to_remove.append(estacion_data)
+
+        # Remove stations that are no longer linked to any line
+        for station in stations_to_remove:
+            data.remove(station)
+
+        # Remove the selected line from the lines list
+        data = [estacion for estacion in data if selected_line not in estacion.get('Lineas', [])]
+
+        # Save updated data back to YAML
+        with open("STPMG.yaml", "w", encoding="utf-8") as file:
+            yaml.safe_dump(data, file, allow_unicode=True)
+
+        QtWidgets.QMessageBox.information(self, "Eliminar Línea", f"Línea '{selected_line}' eliminada por completo.")
+
+        # Refresh the line and station ComboBoxes
+        self.load_lines()
+        self.cmb_Estacion.clear()
+
+
 
 # Código para ejecutar la aplicación si es necesario
 if __name__ == "__main__":
