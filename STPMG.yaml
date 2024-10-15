@@ -1,6 +1,711 @@
-- Direccion: asd
-  ExtraCadena: asd
-  ExtraNumerico: 1
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
   Lineas:
-  - Linea 1
-  Nombre: Prueba
+    - Linea1
+  Nombre: Auditorio
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Periférico Norte
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Dermatológico
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Atemajac
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: División del Norte
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Ávila Camacho
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Mezquitán
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Refugio
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Juárez
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Mexicaltzingo
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Washington
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Santa Filomena
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Unidad Deportiva
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Urdaneta
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: 18 de Marzo
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Isla Raza
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Patria
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: España
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Santuario Mártires de Cristo Rey
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea1
+  Nombre: Periférico Sur
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Juárez
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Plaza Universidad
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: San Juan de Dios
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Belisario Domínguez
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Oblatos
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Cristóbal de Oñate
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: San Andrés
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: San Jacinto
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: La Aurora
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea2
+  Nombre: Tetlán
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Arcos de Zapopan
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Periférico Belenes
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Mercado del Mar
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Zapopan Centro
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Plaza Patria
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Circunvalación Country
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Ávila Camacho
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: La Normal
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Santuario
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Guadalajara Centro
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Independencia
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Plaza de la Bandera
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: CUCEI
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Revolución
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Río Nilo
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Tlaquepaque Centro
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Lázaro Cárdenas
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Linea3
+  Nombre: Central Camionera
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: 5 de mayo
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Acueducto
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Agrícola
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Centro Cultural Universitario
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Chapalita Inn
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Ciudad Granja
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Ciudad Judicial
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Constitución
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: El Batán
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: El Briseño
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: El Colli
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Estadio Chivas
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Felipe Ruvalcaba
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: La Cantera
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: La Tuzanía
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: López Mateos
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Mariano Otero
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Miramar
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Parque Metropolitano
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Periférico Belenes
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Periférico Norte
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: San Isidro
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: San Juan de Ocotán
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Santa Margarita
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Tabachines
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Vallarta
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Barranca de Huentitán
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Independencia Norte
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: La Experiencia
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Lomas del Paraíso
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Rancho Nuevo
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Zoológico Guadalajara
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: 8 de Julio
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Adolf Horn
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Artesanos
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Carretera a Chapala
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: ITESO
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Las Pintas
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Periférico Sur
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: San Sebastianito
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Terminal Sur de Autobuses
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Periférico
+  Nombre: Toluquilla
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Fray Angélico
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Esculturas
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Clemente Orozco
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Lázaro Cárdenas
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Niños Héroes
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Bicentenario
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: San Juan de Dios
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Juan Álvarez
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Circunvalación
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: San Patricio
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Independencia Norte
+
+- Direccion: ""
+  ExtraCadena: ""
+  ExtraNumerico: 0
+  Lineas:
+    - Mi Macro Calzada
+  Nombre: Mirador
