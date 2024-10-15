@@ -6,6 +6,63 @@ from PyQt5.QtCore import QStringListModel
 from TrfmAgregar import AgregarEstacion
 from TfrmEliminar import EliminarEstacion_Linea
 
+
+class TransporteApp(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(TransporteApp, self).__init__()
+        uic.loadUi('interfaces/TfrmPrincipal.ui', self)
+
+        # Crear la instancia de GrafoTransporte
+        self.grafo_transporte = GrafoTransporte()
+
+        self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))
+
+        # Conectar el botón a la función
+        self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
+
+        # Conectar el botón de crear estación a la función
+        self.btn_creaEstacion.clicked.connect(self.abrir_crear_estacion)
+        # Conectar el botón de eliminar la estación
+        self.btn_Eliminar_Estacion.clicked.connect(self.Eliminar_Estacion)
+
+        # Crear el modelo para QListView
+        self.estaciones_model = QStringListModel(self)
+        self.listView.setModel(self.estaciones_model)  # Asignar el modelo al QListView
+
+    def obtener_seleccion(self):
+        linea_seleccionada = self.comboBox.currentText()
+        print(f"Línea seleccionada: {linea_seleccionada}")
+
+        # Cargar el archivo YAML para obtener la información más reciente
+        self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Refrescar los datos desde el archivo
+
+        # Manejar la selección
+        self.manejar_seleccion(linea_seleccionada)
+
+    def manejar_seleccion(self, linea):
+        estaciones = self.grafo_transporte.NameLine.get(linea, [])
+        self.clearListView()
+        self.estaciones_model.setStringList(estaciones)
+
+    def clearListView(self):
+        self.estaciones_model.setStringList([])
+
+    def abrir_crear_estacion(self):
+        # Crear y mostrar la ventana de crear estación
+        self.crear_estacion_window = AgregarEstacion(self)
+        if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
+            self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
+            self.comboBox.clear()  # Limpiar el ComboBox
+            self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))  # Actualizar las líneas
+
+    def Eliminar_Estacion(self):
+        # Crear y mostrar la ventana de eliminar estación
+        self.crear_estacion_window = EliminarEstacion_Linea(self)
+        if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
+            self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
+            self.comboBox.clear()  # Limpiar el ComboBox
+            self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))  # Actualizar las líneas
+
 class Nodo:
     def __init__(self, estacion):
         self.estacion = estacion
@@ -94,61 +151,6 @@ class GrafoTransporte:
             print("El archivo YAML no contiene una lista válida de estaciones.")
 
 
-class TransporteApp(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(TransporteApp, self).__init__()
-        uic.loadUi('interfaces/UI_TranporteGDL.ui', self)
-
-        # Crear la instancia de GrafoTransporte
-        self.grafo_transporte = GrafoTransporte()
-
-        self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))
-
-        # Conectar el botón a la función
-        self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
-
-        # Conectar el botón de crear estación a la función
-        self.btn_creaEstacion.clicked.connect(self.abrir_crear_estacion)
-        # Conectar el botón de eliminar la estación
-        self.btn_Eliminar_Estacion.clicked.connect(self.Eliminar_Estacion)
-
-        # Crear el modelo para QListView
-        self.estaciones_model = QStringListModel(self)
-        self.listView.setModel(self.estaciones_model)  # Asignar el modelo al QListView
-
-    def obtener_seleccion(self):
-        linea_seleccionada = self.comboBox.currentText()
-        print(f"Línea seleccionada: {linea_seleccionada}")
-
-        # Cargar el archivo YAML para obtener la información más reciente
-        self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Refrescar los datos desde el archivo
-
-        # Manejar la selección
-        self.manejar_seleccion(linea_seleccionada)
-
-    def manejar_seleccion(self, linea):
-        estaciones = self.grafo_transporte.NameLine.get(linea, [])
-        self.clearListView()
-        self.estaciones_model.setStringList(estaciones)
-
-    def clearListView(self):
-        self.estaciones_model.setStringList([])
-
-    def abrir_crear_estacion(self):
-        # Crear y mostrar la ventana de crear estación
-        self.crear_estacion_window = AgregarEstacion(self)
-        if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
-            self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
-            self.comboBox.clear()  # Limpiar el ComboBox
-            self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))  # Actualizar las líneas
-
-    def Eliminar_Estacion(self):
-        # Crear y mostrar la ventana de eliminar estación
-        self.crear_estacion_window = EliminarEstacion_Linea(self)
-        if self.crear_estacion_window.exec_():  # Mostrar la ventana como un diálogo modal
-            self.grafo_transporte.LoadFromYAML("STPMG.yaml")  # Recargar el YAML después de agregar la estación
-            self.comboBox.clear()  # Limpiar el ComboBox
-            self.comboBox.addItems(list(self.grafo_transporte.NameLine.keys()))  # Actualizar las líneas
 
 
 # Configuración del programa principal

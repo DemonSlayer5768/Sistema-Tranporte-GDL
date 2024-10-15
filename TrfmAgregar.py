@@ -1,12 +1,14 @@
 import sys
 import yaml  # type: ignore
 from PyQt5 import QtWidgets, uic
+from PyQt5 import QtCore
+
 
 class AgregarEstacion(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(AgregarEstacion, self).__init__(parent)
-        uic.loadUi('interfaces/AgregarEstacion.ui', self)
-
+        uic.loadUi('interfaces/TfrmAgregar.ui', self)
+        
         # Conectar los widgets del formulario
         self.btn_guardar = self.findChild(QtWidgets.QPushButton, 'btn_guardar')
         self.Tedit_Nombre = self.findChild(QtWidgets.QLineEdit, 'Tedit_Nombre')

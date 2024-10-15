@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets, uic
 class EliminarEstacion_Linea(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(EliminarEstacion_Linea, self).__init__(parent)
-        uic.loadUi('interfaces/TfrmBorrarEstacion_Linea.ui', self)
+        uic.loadUi('interfaces/TfrmEliminar.ui', self)
 
         # Acceder a ComboBoxes y botones
         self.cmb_Linea = self.findChild(QtWidgets.QComboBox, 'cmb_Linea')
@@ -100,7 +100,7 @@ class EliminarEstacion_Linea(QtWidgets.QDialog):
         respuesta = QtWidgets.QMessageBox.question(
             self,
             "Confirmar eliminación",
-            f"¿Estás seguro de que deseas eliminar la <b>'{selected_line}'<\b>?",
+            f"¿Estás seguro de que deseas eliminar la <b>'{selected_line}'</b>?",
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
             QtWidgets.QMessageBox.No
         )
