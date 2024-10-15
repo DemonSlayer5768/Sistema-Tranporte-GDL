@@ -46,52 +46,63 @@ class TransporteApp(QtWidgets.QMainWindow):
     def clearListView(self):
         self.estaciones_model.setStringList([])
     
-    def OrdenamientoInsercion(self):
-        linea_seleccionada = self.comboBox.currentText()  # Obtener la línea seleccionada
-        estaciones = self.grafo_transporte.NameLine.get(linea_seleccionada, [])  # Obtener las estaciones de esa línea
+    # def OrdenamientoInsercion(self):
+    #     linea_seleccionada = self.comboBox.currentText()  # Obtener la línea seleccionada
+    #     estaciones = self.grafo_transporte.NameLine.get(linea_seleccionada, [])  # Obtener las estaciones de esa línea
 
-        # Medir el tiempo de ejecución
-        start_time = time.time()
-
-        # Algoritmo de ordenamiento por inserción
-        for i in range(1, len(estaciones)):
-            key = estaciones[i]
-            j = i - 1
-            while j >= 0 and key < estaciones[j]:  # Comparar los nombres de las estaciones
-                estaciones[j + 1] = estaciones[j]
-                j -= 1
-            estaciones[j + 1] = key
-
-        # Mostrar el tiempo transcurrido
-        elapsed_time = time.time() - start_time
-        print(f"Estaciones ordenadas por nombre en la línea {linea_seleccionada}: {estaciones}")
-        print(f"Tiempo de ordenamiento: {elapsed_time:.6f} segundos")
-
-        # Mostrar estaciones ordenadas en el QListView
-        self.estaciones_model.setStringList(estaciones)  # Mostrar los nombres ordenados  
-    # def ordenar_estaciones_por_nombre(self):
-    #     estaciones = self.grafo_transporte.get_all_estaciones()
-        
     #     # Medir el tiempo de ejecución
     #     start_time = time.time()
-
+    #     countEstations = 1
     #     # Algoritmo de ordenamiento por inserción
     #     for i in range(1, len(estaciones)):
     #         key = estaciones[i]
     #         j = i - 1
-    #         while j >= 0 and key.nombre < estaciones[j].nombre:
+    #         countEstations += 1
+    #         while j >= 0 and key < estaciones[j]:  # Comparar los nombres de las estaciones
     #             estaciones[j + 1] = estaciones[j]
     #             j -= 1
     #         estaciones[j + 1] = key
 
     #     # Mostrar el tiempo transcurrido
     #     elapsed_time = time.time() - start_time
-    #     print(f"Estaciones ordenadas por nombre: {[estacion.nombre for estacion in estaciones]}")
+    #     print(f"Estaciones ordenadas por nombre en la línea {linea_seleccionada}: {estaciones}")
     #     print(f"Tiempo de ordenamiento: {elapsed_time:.6f} segundos")
+    #     print(f"numero estaciones: {countEstations}")
 
     #     # Mostrar estaciones ordenadas en el QListView
-    #     estaciones_ordenadas = [estacion.nombre for estacion in estaciones]
-    #     self.estaciones_model.setStringList(estaciones_ordenadas)
+    #     self.estaciones_model.setStringList(estaciones)  # Mostrar los nombres ordenados  
+        
+    def OrdenamientoInsercion(self):
+        estaciones = self.grafo_transporte.get_all_estaciones()
+        
+        # Usar un conjunto para eliminar duplicados y luego convertirlo a lista
+        estaciones_unicas = list({estacion.nombre: estacion for estacion in estaciones}.values())
+        
+        countEstations = 1
+        
+        # Medir el tiempo de ejecución
+        start_time = time.time()
+
+        # Algoritmo de ordenamiento por inserción
+        for i in range(1, len(estaciones_unicas)):
+            key = estaciones_unicas[i]
+            countEstations += 1
+            j = i - 1
+            while j >= 0 and key.nombre < estaciones_unicas[j].nombre:
+                estaciones_unicas[j + 1] = estaciones_unicas[j]
+                j -= 1
+            estaciones_unicas[j + 1] = key
+
+        # Mostrar el tiempo transcurrido
+        elapsed_time = time.time() - start_time
+        print(f"Estaciones ordenadas por nombre: {[estacion.nombre for estacion in estaciones_unicas]}")
+        print(f"Tiempo de ordenamiento: {elapsed_time:.6f} segundos")
+        print(f"numero estaciones: {countEstations}")
+
+        # Mostrar estaciones ordenadas en el QListView
+        self.estaciones_model.setStringList([estacion.nombre for estacion in estaciones_unicas])
+
+
 
     def abrir_crear_estacion(self):
         # Crear y mostrar la ventana de crear estación
