@@ -1,9 +1,12 @@
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtCore import QStringListModel
+from PyQt5.QtCore import QStringListModel, Qt
+from PyQt5.QtWidgets import QMessageBox, QDialog, QVBoxLayout, QTextEdit
+#CLASES PROPIAS
 from Estacion import GrafoTransporte
-from TrfmAgregar import guardar_estacion  
+from TrfmAgregar import Agregar  
 from TfrmEliminar import Eliminar
 from AlgoritmosOrden import AlgoritmosOrdenamiento
+from AlgoritmosBusqueda import Recorrido
 
 class TransporteApp(QtWidgets.QMainWindow):
     def __init__(self):
@@ -22,6 +25,7 @@ class TransporteApp(QtWidgets.QMainWindow):
         
         # Conectar los botones TfrmPrincipal
         self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
+        self.rBtn_Matriz.toggled.connect(self.imprimirMatriz)
 
         # Conectar botones TfrmEliminar
         self.btnEliminar_Estacion.clicked.connect(
@@ -31,9 +35,9 @@ class TransporteApp(QtWidgets.QMainWindow):
 
         # Conectar los botones TfrmAgregar 
         self.btn_guardar.clicked.connect(
-            lambda: guardar_estacion(self.Tedit_Nombre, self.Tedit_Linea, self.Tedit_Anterior, self.Tedit_Siguiente))
+            lambda: Agregar.guardar_estacion(self.Tedit_Nombre, self.Tedit_Linea, self.Tedit_Anterior, self.Tedit_Siguiente))
         self.btn_guardar.clicked.connect(
-            lambda: guardar_estacion(self.Tedit_Nombre, self.Tedit_Linea, self.Tedit_Anterior, self.Tedit_Siguiente))
+            lambda: Agregar.guardar_estacion(self.Tedit_Nombre, self.Tedit_Linea, self.Tedit_Anterior, self.Tedit_Siguiente))
         
         #conexiones de los radios Buttons en algoritmosOrdenamiento 
         radio_buttons = [
@@ -44,7 +48,7 @@ class TransporteApp(QtWidgets.QMainWindow):
             self.rBtn_Rapido
         ]
         
-        # Asigna nombres a los botones para identificarlos (si no los has configurado en Qt Designer)
+        # Asigna nombres a los botones para identificarlos 
         self.rBtn_Insercion.setObjectName("Insercion")
         self.rBtn_Burbuja.setObjectName("Burbuja")
         self.rBtn_Seleccion.setObjectName("Seleccion")
@@ -73,7 +77,7 @@ class TransporteApp(QtWidgets.QMainWindow):
 
     def on_tab_changed(self, index):
         current_tab_name = self.tabWidget.tabText(index)
-        print(f"Pestaña actual: {current_tab_name}")
+        # print(f"Pestaña actual: {current_tab_name}")
 
         if current_tab_name == "Eliminar":
             Eliminar.cargar_lineas_Eliminar(self.cmb_Linea)
@@ -92,13 +96,15 @@ class TransporteApp(QtWidgets.QMainWindow):
             Eliminar.cargar_estaciones(self.cmb_Linea, self.cmb_Estacion)
         
         elif current_tab_name == "Principal":
-            #recargar Lineas 
             TransporteApp.cargar_lineas(self)
+            #recargar el archivo yaml cuando de cambie de pantalla
             
         
         if current_tab_name == "Ordenar":
-            print("si entro")
             AlgoritmosOrdenamiento.cargar_Lineas_Orden(self.cmb_OrdenarLineas)
+            
+        elif current_tab_name == "Busqueda":
+            print("entre")
             
 
             
@@ -126,10 +132,97 @@ class TransporteApp(QtWidgets.QMainWindow):
 
         self.manejar_seleccion(estaciones)
 
-    def manejar_seleccion(self, estaciones):
-        # Mostrar las estaciones en el QListView
-        self.estaciones_model.setStringList(estaciones)  # Actualizar el modelo de la vista
+    def imprimirMatriz(self):
+        # Obtener la línea seleccionada
+        linea_seleccionada = self.comboBox.currentText()
 
+        if linea_seleccionada == "Todas":
+            # Construir una lista de todas las estaciones y sus conexiones combinadas
+            estaciones = []
+            conexiones_globales = {}
+            
+            for linea, estaciones_linea in self.grafo_transporte.NameLine.items():
+                estaciones.extend(estaciones_linea)
+                for estacion in estaciones_linea:
+                    nodo = self.grafo_transporte.NameStations.get(estacion)
+                    if nodo:
+                        if isinstance(nodo.estacion.conexiones, list):
+                            conexiones_globales[estacion] = nodo.estacion.conexiones
+                        elif isinstance(nodo.estacion.conexiones, str):
+                            conexiones_globales[estacion] = nodo.estacion.conexiones.split(",")
+                        else:
+                            conexiones_globales[estacion] = []  # Caso por defecto si no es lista ni cadena
+
+            estaciones = list(set(estaciones))  # Eliminar duplicados
+
+            # Asegurarse de que la lista de estaciones tenga exactamente 50 elementos
+            while len(estaciones) < 50:
+                estaciones.append(f"Ficticia-{len(estaciones) + 1}")
+            estaciones = estaciones[:50]  # Limitar a 50 si hay más
+
+        else:
+            # Obtener las estaciones y conexiones de la línea seleccionada
+            estaciones = self.grafo_transporte.NameLine.get(linea_seleccionada, [])
+            conexiones_globales = {}
+            for estacion in estaciones:
+                nodo = self.grafo_transporte.NameStations.get(estacion)
+                if nodo:
+                    if isinstance(nodo.estacion.conexiones, list):
+                        conexiones_globales[estacion] = nodo.estacion.conexiones
+                    elif isinstance(nodo.estacion.conexiones, str):
+                        conexiones_globales[estacion] = nodo.estacion.conexiones.split(",")
+                    else:
+                        conexiones_globales[estacion] = []
+
+        if not estaciones:
+            QMessageBox.warning(self, "Advertencia", f"No hay estaciones para la línea: {linea_seleccionada}")
+            return
+
+        # Crear la matriz de adyacencia
+        matriz = []
+        for estacion_origen in estaciones:
+            fila = []
+            for estacion_destino in estaciones:
+                if estacion_destino in conexiones_globales.get(estacion_origen, []):
+                    fila.append(1)  # Hay conexión
+                else:
+                    fila.append(0)  # No hay conexión
+            matriz.append(fila)
+
+        # Imprimir en consola
+        print(f"Matriz de adyacencia para la línea '{linea_seleccionada}':")
+        for fila in matriz:
+            print(" ".join(map(str, fila)))
+
+        # Formatear matriz para QMessageBox
+        matriz_texto = "\n".join(" ".join(map(str, fila)) for fila in matriz)
+
+        # # Mostrar en QMessageBox
+        # msg_box = QMessageBox(self)
+        # msg_box.setWindowTitle(f"Matriz de Adyacencia - {linea_seleccionada}")
+        # msg_box.setText(f"Matriz de adyacencia para la línea '{linea_seleccionada}':\n\n{matriz_texto}")
+        # msg_box.exec_()
+        # Crear un QDialog para mostrar la matriz
+        
+        dialogo = QDialog(self)
+        dialogo.setWindowTitle(f"Matriz de Adyacencia - {linea_seleccionada}")
+        dialogo.resize(800, 600)  # Ajusta el tamaño inicial
+        dialogo.setWindowState(dialogo.windowState() | Qt.WindowMaximized)  # Maximizar al abrir
+
+        # Crear un QTextEdit para mostrar la matriz
+        texto_matriz = QTextEdit(dialogo)
+        texto_matriz.setPlainText(matriz_texto)
+        texto_matriz.setReadOnly(True)  # Evitar ediciones
+
+        # Diseño del diálogo
+        layout = QVBoxLayout(dialogo)
+        layout.addWidget(texto_matriz)
+        dialogo.setLayout(layout)
+
+        # Mostrar el diálogo
+        dialogo.exec_()
+
+        
 
 # Configuración del programa principal
 if __name__ == "__main__":
