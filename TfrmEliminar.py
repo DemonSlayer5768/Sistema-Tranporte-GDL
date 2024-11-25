@@ -25,7 +25,7 @@ class Eliminar:
         if isinstance(linea_seleccionada, QtWidgets.QComboBox):
             linea_seleccionada = linea_seleccionada.currentText()
 
-        print("Línea seleccionada:", linea_seleccionada)
+        # print("Línea seleccionada:", linea_seleccionada)
 
         # Filtrado de estaciones según la línea seleccionada
         if linea_seleccionada == "Todas":
@@ -39,7 +39,7 @@ class Eliminar:
                 if Eliminar.cumple_criterio(linea_seleccionada, nodo.estacion.lineas)
             ]
 
-        print("Estaciones filtradas:", estaciones_filtradas)
+        # print("Estaciones filtradas:", estaciones_filtradas)
 
         # Cargar estaciones en el QComboBox
         cmb_Estacion.clear()

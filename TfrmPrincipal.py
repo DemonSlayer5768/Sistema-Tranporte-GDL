@@ -17,6 +17,9 @@ class TransporteApp(QtWidgets.QMainWindow):
         self.estaciones_model = QStringListModel(self)
         self.listView.setModel(self.estaciones_model)
 
+        # Conectar la señal currentChanged llamar funciones cada vez que cambian de pagina
+        self.tabWidget.currentChanged.connect(self.on_tab_changed)
+        
         # Conectar los botones TfrmPrincipal
         self.btn_BuscarEstacion.clicked.connect(self.obtener_seleccion)
 
@@ -32,9 +35,40 @@ class TransporteApp(QtWidgets.QMainWindow):
         self.btn_guardar.clicked.connect(
             lambda: guardar_estacion(self.Tedit_Nombre, self.Tedit_Linea, self.Tedit_Anterior, self.Tedit_Siguiente))
         
+        #conexiones de los radios Buttons en algoritmosOrdenamiento 
+        radio_buttons = [
+            self.rBtn_Insercion,
+            self.rBtn_Burbuja,
+            self.rBtn_Seleccion,
+            self.rBtn_Mezcla,
+            self.rBtn_Rapido
+        ]
         
-        # Conectar la señal currentChanged llamar funciones cada vez que cambian de pagina
-        self.tabWidget.currentChanged.connect(self.on_tab_changed)
+        # Asigna nombres a los botones para identificarlos (si no los has configurado en Qt Designer)
+        self.rBtn_Insercion.setObjectName("Insercion")
+        self.rBtn_Burbuja.setObjectName("Burbuja")
+        self.rBtn_Seleccion.setObjectName("Seleccion")
+        self.rBtn_Mezcla.setObjectName("Mezcla")
+        self.rBtn_Rapido.setObjectName("Rapido")
+        
+                
+        # Conectar todos los botones al mismo método con un bucle
+        for rbtn in radio_buttons:
+            rbtn.toggled.connect(self.handleRadioButtonToggled)
+
+    def handleRadioButtonToggled(self):
+        # Llama a la función AlgoritmosOrdenamiento.recibirDatos solo si el botón está marcado
+        if self.sender().isChecked():
+            boton_nombre = self.sender().objectName()  # Identifica el botón por su nombre
+            AlgoritmosOrdenamiento.recibirDatos(
+                self.cmb_OrdenarLineas, 
+                self.listView_Ordenamiento, 
+                self.txtEdit_Time,
+                boton_nombre
+            )
+            # print("seleccione el btn ", boton_nombre)
+            
+        
        
 
     def on_tab_changed(self, index):
