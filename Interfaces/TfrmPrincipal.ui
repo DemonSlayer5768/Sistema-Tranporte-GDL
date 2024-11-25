@@ -6,118 +6,605 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>414</width>
-    <height>553</height>
+    <width>446</width>
+    <height>678</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>414</width>
-    <height>553</height>
+    <width>446</width>
+    <height>678</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>414</width>
-    <height>553</height>
+    <width>446</width>
+    <height>678</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>4</y>
-     <width>291</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>441</width>
+     <height>671</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Microsoft JhengHei</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Ingresa Una Linea o Macro</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>4</x>
-     <y>120</y>
-     <width>401</width>
-     <height>421</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Estaciones</string>
-   </property>
-   <widget class="QListView" name="listView">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>381</width>
-      <height>391</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="btn_BuscarEstacion">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>101</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>IMPRIMIR</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_creaEstacion">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>40</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Nueva</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_Eliminar_Estacion">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>70</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Eliminar</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Principal">
+       <attribute name="title">
+        <string>Principal</string>
+       </attribute>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>110</y>
+          <width>181</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_BuscarEstacion">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>110</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>IMPRIMIR</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>180</y>
+          <width>401</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Estaciones</string>
+        </property>
+        <widget class="QListView" name="listView">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>381</width>
+           <height>411</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>20</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+          <pointsize>28</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Estaciones</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="AgregarEstaciones">
+       <attribute name="title">
+        <string>Agregar</string>
+       </attribute>
+       <widget class="QLabel" name="label_nombre">
+        <property name="geometry">
+         <rect>
+          <x>35</x>
+          <y>130</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Nombre:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Tedit_Siguiente">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>280</y>
+          <width>200</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Tedit_Linea">
+        <property name="geometry">
+         <rect>
+          <x>189</x>
+          <y>186</y>
+          <width>200</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_direccion">
+        <property name="geometry">
+         <rect>
+          <x>35</x>
+          <y>230</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Estacion Anterior:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>35</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+          <pointsize>28</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Agregar Estación</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Tedit_Nombre">
+        <property name="geometry">
+         <rect>
+          <x>189</x>
+          <y>134</y>
+          <width>200</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_linea">
+        <property name="geometry">
+         <rect>
+          <x>35</x>
+          <y>180</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Línea:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Tedit_Anterior">
+        <property name="geometry">
+         <rect>
+          <x>189</x>
+          <y>235</y>
+          <width>200</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_guardar">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>470</y>
+          <width>281</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_direccion_2">
+        <property name="geometry">
+         <rect>
+          <x>35</x>
+          <y>280</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Estacion Siguiente:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="EliminarEstacion">
+       <attribute name="title">
+        <string>Eliminar</string>
+       </attribute>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>30</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+          <pointsize>28</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Elminar Estación</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>91</x>
+          <y>114</y>
+          <width>249</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;ELIMINAR LINEA O MACRO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmb_Linea">
+        <property name="geometry">
+         <rect>
+          <x>111</x>
+          <y>164</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnEliminar_Linea">
+        <property name="geometry">
+         <rect>
+          <x>111</x>
+          <y>204</y>
+          <width>211</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Eliminar Linea</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>91</x>
+          <y>304</y>
+          <width>209</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;ELIMINAR ESTACION&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmb_Estacion">
+        <property name="geometry">
+         <rect>
+          <x>111</x>
+          <y>354</y>
+          <width>209</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnEliminar_Estacion">
+        <property name="geometry">
+         <rect>
+          <x>111</x>
+          <y>394</y>
+          <width>209</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Eliminar Estacion</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Ordenamientos">
+       <attribute name="title">
+        <string>Ordenar</string>
+       </attribute>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>30</y>
+          <width>341</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+          <pointsize>28</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ordenar Estaciónes</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>100</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Escoge un metodo de Ordenamiento</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Insercion">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Inserción</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Burbuja">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>160</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Burbuja</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Seleccion">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>160</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Seleccion</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Mezcla">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>200</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Mezcla</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Rapido">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>200</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rapido</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>264</y>
+          <width>381</width>
+          <height>381</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Ordenamiento</string>
+        </property>
+        <widget class="QListView" name="listView_Ordenamiento">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>361</width>
+           <height>341</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="btn_Ordenar">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>200</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ordenar</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmb_OrdenarLineas">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>80</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="txtEdit_Time">
+        <property name="geometry">
+         <rect>
+          <x>205</x>
+          <y>236</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>35</x>
+          <y>236</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tiempo de ordenamiento:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="AlgoritmosBusqueda">
+       <attribute name="title">
+        <string>Busqueda</string>
+       </attribute>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>20</y>
+          <width>341</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+          <pointsize>28</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Buscar Estaciónes</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

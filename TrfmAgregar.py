@@ -1,90 +1,83 @@
-import sys
 import yaml  # type: ignore
-from PyQt5 import QtWidgets, uic
-from PyQt5 import QtCore
+from PyQt5 import QtWidgets
+from Estacion import GrafoTransporte, Estacion, Nodo  
 
+def guardar_estacion(Tedit_Nombre, Tedit_Linea, Tedit_Anterior, Tedit_Siguiente):
+    # Obtener datos ingresados por el usuario
+    nombre = Tedit_Nombre.text().strip()
+    linea = Tedit_Linea.text().strip()
+    anterior = Tedit_Anterior.text().strip()
+    siguiente = Tedit_Siguiente.text().strip()
 
-class AgregarEstacion(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(AgregarEstacion, self).__init__(parent)
-        uic.loadUi('interfaces/TfrmAgregar.ui', self)
-        
-        # Conectar los widgets del formulario
-        self.btn_guardar = self.findChild(QtWidgets.QPushButton, 'btn_guardar')
-        self.Tedit_Nombre = self.findChild(QtWidgets.QLineEdit, 'Tedit_Nombre')
-        self.Tedit_Linea = self.findChild(QtWidgets.QLineEdit, 'Tedit_Linea')
-        self.Tedit_Direccion = self.findChild(QtWidgets.QLineEdit, 'Tedit_Direccion')
-        self.Tedit_EC = self.findChild(QtWidgets.QLineEdit, 'Tedit_EC')
-        self.Tedit_EN = self.findChild(QtWidgets.QLineEdit, 'Tedit_EN')
+    # Validar que los campos no estén vacíos
+    if not nombre or not linea:
+        QtWidgets.QMessageBox.warning(None, "Error", "Los campos Nombre y Línea son obligatorios.")
+        return
 
-        # Conectar el botón de guardar con la función correspondiente
-        self.btn_guardar.clicked.connect(self.guardar_estacion)
+    # Crear la estructura de la estación
+    nueva_estacion = Estacion(
+        nombre=nombre,
+        lineas=[linea],
+        conexiones=[anterior, siguiente]
+    )
 
-    def guardar_estacion(self):
-        # Obtener los datos ingresados por el usuario
-        nombre_estacion = self.Tedit_Nombre.text().strip()
-        linea_estacion = self.Tedit_Linea.text().strip()
-        direccion = self.Tedit_Direccion.text().strip()
-        ExtraCadena = self.Tedit_EC.text().strip()
-        ExtraNumerico = self.Tedit_EN.text().strip()
+    # Inicializar el grafo de transporte
+    grafo = GrafoTransporte()
 
-        # Validación para asegurarse de que los campos requeridos no estén vacíos
-        if nombre_estacion and linea_estacion:
-            # Validar si ExtraNumerico es realmente un número
-            if ExtraNumerico.isdigit():
-                ExtraNumerico = int(ExtraNumerico)
-                self.modificar_yaml(nombre_estacion, linea_estacion, direccion, ExtraCadena, ExtraNumerico)
-                self.accept()  # Cierra el diálogo después de guardar
-            else:
-                QtWidgets.QMessageBox.warning(self, "Error", "El campo 'Extra Numerico' debe ser un número.")
-        else:
-            QtWidgets.QMessageBox.warning(self, "Error", "Por favor, completa todos los campos requeridos.")
+    # Verificar si la estación ya existe
+    if nombre in grafo.NameStations:
+        QtWidgets.QMessageBox.warning(None, "Error", "La estación ya existe.")
+        return
 
-    def modificar_yaml(self, nombre, linea, direccion, ExtraCadena, ExtraNumerico):
-        # Cargar el archivo YAML
-        try:
-            with open("STPMG.yaml", "r", encoding="utf-8") as file:
-                data = yaml.safe_load(file) or []
-        except FileNotFoundError:
-            # Si el archivo no existe, inicializar una lista vacía
-            data = []
+    # Crear el nuevo nodo para la estación
+    nuevo_nodo = Nodo(nueva_estacion)
 
-        # Verificar si la estación ya existe
-        estacion_existente = next((estacion for estacion in data if estacion['Nombre'] == nombre), None)
+    # Agregar la estación al grafo
+    if grafo.Head is None:
+        grafo.Head = nuevo_nodo
+        grafo.cola = nuevo_nodo
+    else:
+        grafo.cola.next = nuevo_nodo
+        nuevo_nodo.anterior = grafo.cola
+        grafo.cola = nuevo_nodo
 
-        if estacion_existente:
-            # Si la estación existe, actualizar su información
-            estacion_existente['Direccion'] = direccion
-            estacion_existente['ExtraCadena'] = ExtraCadena
-            estacion_existente['ExtraNumerico'] = ExtraNumerico
+    grafo.NameStations[nombre] = nuevo_nodo
 
-            # Si la línea no está en la lista de líneas de la estación, agregarla
-            if linea not in estacion_existente['Lineas']:
-                estacion_existente['Lineas'].append(linea)
-        else:
-            # Si la estación no existe, agregarla
-            nueva_estacion = {
-                'Nombre': nombre,
-                'Lineas': [linea],
-                'Direccion': direccion,
-                'ExtraCadena': ExtraCadena,
-                'ExtraNumerico': ExtraNumerico
-            }
-            data.append(nueva_estacion)
+    # Actualizar las líneas en el grafo
+    for linea in nueva_estacion.lineas:
+        if linea not in grafo.NameLine:
+            grafo.NameLine[linea] = []
+        grafo.NameLine[linea].append(nombre)
 
-        # Ordenar las estaciones alfabéticamente por nombre
-        data.sort(key=lambda x: x['Nombre'])
+    # Guardar las estaciones en el archivo YAML
+    archivo_yaml = "STPMG.yaml"
 
-        # Guardar el archivo YAML actualizado
-        with open("STPMG.yaml", "w", encoding="utf-8") as file:
-            yaml.safe_dump(data, file, allow_unicode=True)
+    # Leer las estaciones existentes del archivo YAML
+    try:
+        with open(archivo_yaml, "r", encoding="utf-8") as file:
+            data = yaml.safe_load(file) or {}
+    except FileNotFoundError:
+        data = {"Estaciones": []}  # Si no existe el archivo, inicializar la clave 'Estaciones'
 
-        print(f"Estación '{nombre}' modificada o agregada correctamente.")
+    # Agregar la nueva estación a la lista de estaciones en YAML
+    nueva_estacion_yaml = {
+        "Estacion": nombre,
+        "Lineas": nueva_estacion.lineas,
+        "Conexiones": nueva_estacion.conexiones
+    }
+    data["Estaciones"].append(nueva_estacion_yaml)
 
+    # Guardar los datos actualizados en el archivo YAML
+    with open(archivo_yaml, "w", encoding="utf-8") as file:
+        yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
 
-# Código para ejecutar la aplicación
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    window = AgregarEstacion()
-    window.show()
-    sys.exit(app.exec_())
+    # Confirmar el guardado y limpiar los campos
+    QtWidgets.QMessageBox.information(None, "Exito", "Estación guardada correctamente.")
+    limpiar_campos(Tedit_Nombre, Tedit_Linea, Tedit_Anterior, Tedit_Siguiente)
+
+def limpiar_campos(Tedit_Nombre, Tedit_Linea, Tedit_Anterior, Tedit_Siguiente):
+    # Limpiar los campos de texto
+    Tedit_Nombre.clear()
+    Tedit_Linea.clear()
+    Tedit_Anterior.clear()
+    Tedit_Siguiente.clear()

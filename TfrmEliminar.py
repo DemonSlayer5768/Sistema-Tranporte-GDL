@@ -1,145 +1,202 @@
-import sys
 import yaml  # type: ignore
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets
+from Estacion import GrafoTransporte, Estacion, Nodo 
 
-class EliminarEstacion_Linea(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(EliminarEstacion_Linea, self).__init__(parent)
-        uic.loadUi('interfaces/TfrmEliminar.ui', self)
-
-        # Acceder a ComboBoxes y botones
-        self.cmb_Linea = self.findChild(QtWidgets.QComboBox, 'cmb_Linea')
-        self.cmb_Estacion = self.findChild(QtWidgets.QComboBox, 'cmb_Estacion')
-        self.btnEliminar_Estacion = self.findChild(QtWidgets.QPushButton, 'btnEliminar_Estacion')
-        self.btnEliminar_Linea = self.findChild(QtWidgets.QPushButton, 'btnEliminar_Linea')
-
-        # Limpiar el ComboBox para que esté vacío al inicio
-        self.cmb_Linea.clear()
-
-        # Conectar señales
-        self.cmb_Linea.activated.connect(self.load_stations)
-        self.cmb_Linea.mousePressEvent = self.load_lines_on_click  
-        self.btnEliminar_Estacion.clicked.connect(self.eliminar_estacion)
-        self.btnEliminar_Linea.clicked.connect(self.eliminar_linea)
-
-    def load_lines_on_click(self, event):
-        if not self.cmb_Linea.count():  
-            self.load_lines()  
-        QtWidgets.QComboBox.mousePressEvent(self.cmb_Linea, event)  
+class Eliminar:
+    
+   
+    
+    @staticmethod
+    def cargar_lineas_Eliminar(cmb_Linea):
+        grafo_transporte = GrafoTransporte()
+         
+        cmb_Linea.clear()  # Limpiar el ComboBox
+        cmb_Linea.addItem("Todas")  # Agregar la opción 'Todas'
+        cmb_Linea.addItems(list(grafo_transporte.NameLine.keys()))  # Agregar las líneas
 
 
-    def load_lines(self):
+    
+    @staticmethod
+    def cargar_estaciones(linea_seleccionada, cmb_Estacion):
+        # Instancia del grafo de transporte
+        grafo_transporte = GrafoTransporte()
         
-        with open("STPMG.yaml", "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file) or []
+        # Si la entrada es un QComboBox, obtenemos el texto seleccionado
+        if isinstance(linea_seleccionada, QtWidgets.QComboBox):
+            linea_seleccionada = linea_seleccionada.currentText()
 
-        unique_lines = set()
+        print("Línea seleccionada:", linea_seleccionada)
 
-        for estacion_data in data:
-            lineas = estacion_data.get('Lineas', [])
-            unique_lines.update(lineas) 
+        # Filtrado de estaciones según la línea seleccionada
+        if linea_seleccionada == "Todas":
+            estaciones_filtradas = [
+                nodo.estacion.nombre for nodo in grafo_transporte.NameStations.values()
+            ]  # Todas las estaciones
+        else:
+            estaciones_filtradas = [
+                nodo.estacion.nombre
+                for nodo in grafo_transporte.NameStations.values()
+                if Eliminar.cumple_criterio(linea_seleccionada, nodo.estacion.lineas)
+            ]
 
-        # Agregar las líneas únicas ordenadas al ComboBox
-        self.cmb_Linea.addItems(sorted(unique_lines))
+        print("Estaciones filtradas:", estaciones_filtradas)
+
+        # Cargar estaciones en el QComboBox
+        cmb_Estacion.clear()
+        cmb_Estacion.addItems(estaciones_filtradas)
 
 
-    def load_stations(self):
-        selected_line = self.cmb_Linea.currentText()
 
-        # Limpiar estaciones existentes en cmb_Estacion
-        self.cmb_Estacion.clear()
+    @staticmethod
+    def cumple_criterio(linea, lineas_estacion):
+        return linea in lineas_estacion
 
-        with open("STPMG.yaml", "r", encoding="utf-8") as file:
-            data = yaml.safe_load(file) or []
 
-        for estacion_data in data:
-            if selected_line in estacion_data.get('Lineas', []):
-                # Agregar estaciones a cmb_Estacion
-                self.cmb_Estacion.addItem(estacion_data.get('Nombre'))
+    @staticmethod
+    def eliminar_estacion(cmb_Linea, cmb_Estacion):
+        # Obtener línea y estación seleccionadas
+        nombre_estacion = cmb_Estacion.currentText().strip()
+        nombre_linea = cmb_Linea.currentText().strip()
 
-    def eliminar_estacion(self):
-        selected_line = self.cmb_Linea.currentText()
-        selected_station = self.cmb_Estacion.currentText()
+        # Validar que los campos no estén vacíos
+        if not nombre_estacion or not nombre_linea:
+            QtWidgets.QMessageBox.warning(None, "Error", "Seleccione una línea y una estación para eliminar.")
+            return
 
-        # Preguntar al usuario si está seguro de eliminar la estación
+        # Confirmar eliminación
         respuesta = QtWidgets.QMessageBox.question(
-            self,
+            None,
             "Confirmar eliminación",
-            f"¿Estás seguro de que deseas eliminar la Estacion <b>'{selected_station}'</b> de la <b>'{selected_line}'</b>?",
+            f"¿Eliminar la estación '{nombre_estacion}' de la línea '{nombre_linea}'?",
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-            QtWidgets.QMessageBox.No
+        ) 
+
+        if respuesta == QtWidgets.QMessageBox.Yes:
+            try:
+                # Inicializar el grafo de transporte
+                grafo = GrafoTransporte()
+
+                # Verificar si la estación existe en el grafo
+                if nombre_estacion not in grafo.NameStations:
+                    QtWidgets.QMessageBox.warning(None, "Error", "La estación no existe en el grafo.")
+                    return
+
+                # Obtener el nodo de la estación
+                nodo_estacion = grafo.NameStations[nombre_estacion]
+
+                # Actualizar conexiones
+                if nodo_estacion.anterior:
+                    nodo_estacion.anterior.next = nodo_estacion.next
+                if nodo_estacion.next:
+                    nodo_estacion.next.anterior = nodo_estacion.anterior
+
+                # Actualizar la cabeza y cola del grafo si corresponde
+                if grafo.Head == nodo_estacion:
+                    grafo.Head = nodo_estacion.next
+                if grafo.cola == nodo_estacion:
+                    grafo.cola = nodo_estacion.anterior
+
+                # Eliminar la estación del grafo
+                del grafo.NameStations[nombre_estacion]
+
+                # Actualizar las líneas asociadas
+                if nombre_linea in grafo.NameLine:
+                    grafo.NameLine[nombre_linea].remove(nombre_estacion)
+                    if not grafo.NameLine[nombre_linea]:  # Eliminar línea si no tiene estaciones
+                        del grafo.NameLine[nombre_linea]
+
+                # Actualizar el archivo YAML
+                archivo_yaml = "STPMG.yaml"
+                with open(archivo_yaml, "r", encoding="utf-8") as file:
+                    data = yaml.safe_load(file) or {}
+
+                # Eliminar la estación del archivo YAML
+                data["Estaciones"] = [
+                    estacion for estacion in data.get("Estaciones", [])
+                    if estacion["Estacion"] != nombre_estacion
+                ]
+
+                with open(archivo_yaml, "w", encoding="utf-8") as file:
+                    yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
+
+                # Confirmar eliminación
+                QtWidgets.QMessageBox.information(None, "Éxito", f"La estación '{nombre_estacion}' ha sido eliminada.")
+                cmb_Estacion.clear()  # Refrescar ComboBox de estaciones
+
+            except Exception as e:
+                QtWidgets.QMessageBox.critical(None, "Error", f"Ocurrió un error al eliminar la estación: {str(e)}")
+                
+    @staticmethod
+    def eliminar_linea(cmb_Linea):
+        # Obtener la línea seleccionada
+        nombre_linea = cmb_Linea.currentText().strip()
+
+        # Validar que el campo no esté vacío
+        if not nombre_linea:
+            QtWidgets.QMessageBox.warning(None, "Error", "Seleccione una línea para eliminar.")
+            return
+
+        # Confirmar eliminación
+        respuesta = QtWidgets.QMessageBox.question(
+            None,
+            "Confirmar eliminación",
+            f"¿Eliminar la línea '{nombre_linea}' y todas sus estaciones asociadas?",
+            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
         )
 
         if respuesta == QtWidgets.QMessageBox.Yes:
-            with open("STPMG.yaml", "r", encoding="utf-8") as file:
-                data = yaml.safe_load(file) or []
+            try:
+                # Inicializar el grafo de transporte
+                grafo = GrafoTransporte()
 
-            # Buscar la estacion y eliminarla
-            for estacion_data in data:
-                if selected_station == estacion_data.get('Nombre') and selected_line in estacion_data.get('Lineas', []):
-                    estacion_data['Lineas'].remove(selected_line)
+                # Verificar si la línea existe en el grafo
+                if nombre_linea not in grafo.NameLine:
+                    QtWidgets.QMessageBox.warning(None, "Error", "La línea no existe en el grafo.")
+                    return
 
-                    # Si la estación ya no tiene líneas, eliminarla completamente
-                    if not estacion_data['Lineas']:
-                        data.remove(estacion_data)
+                # Obtener las estaciones asociadas a la línea
+                estaciones_asociadas = grafo.NameLine[nombre_linea]
 
-            # Guardar datos actualizados
-            with open("STPMG.yaml", "w", encoding="utf-8") as file:
-                yaml.safe_dump(data, file, allow_unicode=True)
+                # Eliminar las estaciones del grafo
+                for estacion in estaciones_asociadas:
+                    if estacion in grafo.NameStations:
+                        nodo_estacion = grafo.NameStations[estacion]
 
-            QtWidgets.QMessageBox.information(self, "Eliminar Estacion", f" Estacion <b>'{selected_station}'</b> eliminada de la <b>'{selected_line}'</b>.")
+                        # Actualizar conexiones
+                        if nodo_estacion.anterior:
+                            nodo_estacion.anterior.next = nodo_estacion.next
+                        if nodo_estacion.next:
+                            nodo_estacion.next.anterior = nodo_estacion.anterior
 
-            # Refrescar el ComboBox de estaciones
-            self.load_stations()
+                        # Actualizar la cabeza y cola del grafo si corresponde
+                        if grafo.Head == nodo_estacion:
+                            grafo.Head = nodo_estacion.next
+                        if grafo.cola == nodo_estacion:
+                            grafo.cola = nodo_estacion.anterior
 
-    def eliminar_linea(self):
-        # """Eliminar la línea completa y sus estaciones asociadas si ya no están vinculadas a otras líneas."""
-        selected_line = self.cmb_Linea.currentText()
+                        # Eliminar la estación del grafo
+                        del grafo.NameStations[estacion]
 
-        # Preguntar al usuario si está seguro de eliminar la línea
-        respuesta = QtWidgets.QMessageBox.question(
-            self,
-            "Confirmar eliminación",
-            f"¿Estás seguro de que deseas eliminar la <b>'{selected_line}'</b>?",
-            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-            QtWidgets.QMessageBox.No
-        )
+                # Eliminar la línea del grafo
+                del grafo.NameLine[nombre_linea]
 
-        if respuesta == QtWidgets.QMessageBox.Yes:
-            with open("STPMG.yaml", "r", encoding="utf-8") as file:
-                data = yaml.safe_load(file) or []
+                # Actualizar el archivo YAML
+                archivo_yaml = "STPMG.yaml"
+                with open(archivo_yaml, "r", encoding="utf-8") as file:
+                    data = yaml.safe_load(file) or {}
 
-            # Remover la línea seleccionada de todas las estaciones y recopilar estaciones para eliminar
-            stations_to_remove = []
-            for estacion_data in data:
-                if selected_line in estacion_data.get('Lineas', []):
-                    estacion_data['Lineas'].remove(selected_line)  # Eliminar la línea de la estación
-                    
-                    # Si la estación ya no tiene líneas, marcarla para eliminación
-                    if not estacion_data['Lineas']:
-                        stations_to_remove.append(estacion_data)
+                # Eliminar las estaciones y la línea del archivo YAML
+                data["Estaciones"] = [
+                    estacion for estacion in data.get("Estaciones", [])
+                    if nombre_linea not in estacion["Lineas"]
+                ]
 
-            # Eliminar estaciones que ya no están vinculadas a ninguna línea
-            for station in stations_to_remove:
-                data.remove(station)
+                with open(archivo_yaml, "w", encoding="utf-8") as file:
+                    yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
 
-            # Eliminar la línea seleccionada de la lista de líneas
-            data = [estacion for estacion in data if selected_line not in estacion.get('Lineas', [])]
+                # Confirmar eliminación
+                QtWidgets.QMessageBox.information(None, "Éxito", f"La línea '{nombre_linea}' y sus estaciones han sido eliminadas.")
+                cmb_Linea.clear()  # Refrescar ComboBox de líneas
 
-            # Guardar datos actualizados de nuevo en YAML
-            with open("STPMG.yaml", "w", encoding="utf-8") as file:
-                yaml.safe_dump(data, file, allow_unicode=True)
-
-            QtWidgets.QMessageBox.information(self, "La Línea", f"<b>'{selected_line}'</b> fue eliminada por completo.")
-
-            # Refrescar los ComboBoxes de líneas y estaciones
-            self.load_lines()
-            self.cmb_Estacion.clear()
-
-
-# Código para ejecutar la aplicación si es necesario
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    window = EliminarEstacion_Linea()
-    window.show()
-    sys.exit(app.exec_())
+            except Exception as e:
+                QtWidgets.QMessageBox.critical(None, "Error", f"Ocurrió un error al eliminar la línea: {str(e)}")

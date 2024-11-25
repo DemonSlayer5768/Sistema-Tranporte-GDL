@@ -1,705 +1,590 @@
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Auditorio
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Periférico Norte
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Dermatológico
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Atemajac
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: División del Norte
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-    - Linea3
-  Nombre: Ávila Camacho
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Mezquitán
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Refugio
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Juárez
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Mexicaltzingo
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Washington
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Santa Filomena
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Unidad Deportiva
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Urdaneta
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: 18 de Marzo
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Isla Raza
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Patria
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: España
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Santuario Mártires de Cristo Rey
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea1
-  Nombre: Periférico Sur
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Juárez
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Plaza Universidad
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: San Juan de Dios
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Belisario Domínguez
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Oblatos
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Cristóbal de Oñate
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: San Andrés
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: San Jacinto
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: La Aurora
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea2
-  Nombre: Tetlán
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Arcos de Zapopan
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Periférico Belenes
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Mercado del Mar
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Zapopan Centro
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Plaza Patria
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Circunvalación Country
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: La Normal
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Santuario
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Guadalajara Centro
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Independencia
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Plaza de la Bandera
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: CUCEI
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Revolución
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Río Nilo
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Tlaquepaque Centro
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Lázaro Cárdenas
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Linea3
-  Nombre: Central Camionera
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: 5 de mayo
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Acueducto
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Agrícola
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Centro Cultural Universitario
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Chapalita Inn
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Ciudad Granja
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Ciudad Judicial
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Constitución
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: El Batán
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: El Briseño
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: El Colli
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Estadio Chivas
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Felipe Ruvalcaba
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: La Cantera
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: La Tuzanía
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: López Mateos
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Mariano Otero
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Miramar
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Parque Metropolitano
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Periférico Belenes
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Periférico Norte
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: San Isidro
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: San Juan de Ocotán
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Santa Margarita
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Tabachines
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Vallarta
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Barranca de Huentitán
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Independencia Norte
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: La Experiencia
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Lomas del Paraíso
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Rancho Nuevo
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Zoológico Guadalajara
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: 8 de Julio
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Adolf Horn
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Artesanos
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Carretera a Chapala
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: ITESO
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Las Pintas
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Periférico Sur
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: San Sebastianito
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Terminal Sur de Autobuses
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Periférico
-  Nombre: Toluquilla
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Fray Angélico
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Esculturas
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Clemente Orozco
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Lázaro Cárdenas
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Niños Héroes
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Bicentenario
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: San Juan de Dios
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Juan Álvarez
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Circunvalación
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: San Patricio
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Independencia Norte
-
-- Direccion: ""
-  ExtraCadena: ""
-  ExtraNumerico: 0
-  Lineas:
-    - Mi Macro Calzada
-  Nombre: Mirador
+Estaciones:
+- Conexiones:
+  - ''
+  - Periferico Norte
+  Estacion: Auditorio
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Periferico Norte
+  - Atemajac
+  Estacion: Dermatologia
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Dermatologia
+  - Division Norte
+  Estacion: Atemajac
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Atemajac
+  - Avila Camacho
+  Estacion: Division Norte
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Division Norte
+  - Mezquitan
+  Estacion: Avila Camacho
+  Lineas:
+  - Linea 1
+  - Linea 3
+- Conexiones:
+  - Avila Camacho
+  - Refugio
+  Estacion: Mezquitan
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Mezquitan
+  - Juarez
+  Estacion: Refugio
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Refugio
+  - Mexicaltzingo
+  Estacion: Juarez
+  Lineas:
+  - Linea 1
+  - Linea 2
+- Conexiones:
+  - Juarez
+  - Whashington
+  Estacion: Mexicaltzingo
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Mexicaltzingo
+  - Santa Filomena
+  Estacion: Whashington
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Whashington
+  - Unidad Deportiva
+  Estacion: Santa Filomena
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Santa Filomena
+  - Urdaneta
+  Estacion: Unidad Deportiva
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Unidad Deportiva
+  - 18 de Marzo
+  Estacion: Urdaneta
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Urdaneta
+  - Isla Raza
+  Estacion: 18 de Marzo
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - 18 de Marzo
+  - Patria Sur
+  Estacion: Isla Raza
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Isla Raza
+  - España
+  Estacion: Patria Sur
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - Patria Sur
+  - Martines de Cristo
+  Estacion: España
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - España
+  - Periferico Sur
+  Estacion: Martinez de Cristo
+  Lineas:
+  - Linea 1
+- Conexiones:
+  - ''
+  - La Aurora
+  Estacion: Tetlan
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - Tetlan
+  - San Jacinto
+  Estacion: La Aurora
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - La Aurora
+  - San Andres
+  Estacion: San Jacinto
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - San Jacinto
+  - Cristobal de Oñate
+  Estacion: San Andres
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - San Andres
+  - Oblatos
+  Estacion: Cristobal de Oñate
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - Cristobal de Oñate
+  - Belisario Dominguez
+  Estacion: Oblatos
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - Oblatos
+  - San Juan de Dios
+  Estacion: Belisario Dominguez
+  Lineas:
+  - Linea 2
+- Conexiones:
+  - Belisario Dominguez
+  - Plaza Universidad
+  Estacion: San Juan de Dios
+  Lineas:
+  - Linea 2
+  - Mi Macro Calzada
+- Conexiones:
+  - San Juan de Dios
+  - Juarez
+  Estacion: Plaza Universidad
+  Lineas:
+  - Linea 2
+  - Linea 3
+- Conexiones:
+  - ''
+  - Periferico Belenes
+  Estacion: Arcos de Zapopan
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Periferico Belenes
+  - Zapopan Centro
+  Estacion: Mercado del Mar
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Mercado del Mar
+  - Plaza Patria
+  Estacion: Zapopan Centro
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Zapopan Centro
+  - Circunvalacion Country
+  Estacion: Plaza Patria
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Plaza Patria
+  - Avila Camacho
+  Estacion: Circunvalacion Country
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Avila Camacho
+  - Santuario
+  Estacion: La Normal (CETRAM)
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - La Normal (CETRAM)
+  - Guadalajara Centro
+  Estacion: Santuario
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Santuario
+  - Independencia
+  Estacion: Guadalajara Centro
+  Lineas:
+  - Linea 3
+  - Linea 2
+- Conexiones:
+  - Guadalajara Centro
+  - Plaza de la Bandera
+  Estacion: Independencia
+  Lineas:
+  - Linea 3
+  - Mi Macro Calzada
+- Conexiones:
+  - Independencia
+  - CUCEI
+  Estacion: Plaza de la Bandera
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Plaza de la Bandera
+  - Revolucion
+  Estacion: CUCEI
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - CUCEI
+  - Rio Nilo
+  Estacion: Revolucion
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Revolucion
+  - Tlaquepaque Centro
+  Estacion: Rio Nilo
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Rio Nilo
+  - Lazaro Cardenas
+  Estacion: Tlaquepaque Centro
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Tlaquepaque Centro
+  - Central de Autobuses
+  Estacion: Lazaro Cardenas
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - Lazaro Cardenas
+  - ''
+  Estacion: Central de Autobuses
+  Lineas:
+  - Linea 3
+- Conexiones:
+  - ''
+  - Huentitan
+  Estacion: Mirador
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Mirador
+  - Zoologico
+  Estacion: Huentitan
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Huentitan
+  - Independencia Norte
+  Estacion: Zoologico
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Independencia Norte
+  - Igualdad
+  Estacion: San Patricio
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - San Patricio
+  - Monumental
+  Estacion: Igualdad
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Igualdad
+  - Monte Olivette
+  Estacion: Monumental
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Monumental
+  - Circunvalacion
+  Estacion: Monte Olivette
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Monte Olivette
+  - Ciencias de la Salud
+  Estacion: Circunvalacion
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Circunvalacion
+  - Juan Alvarez
+  Estacion: Ciencias de la Salud
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Ciencias de la Salud
+  - Alameda
+  Estacion: Juan Alvarez
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Juan Alvarez
+  - San Juan de Dios
+  Estacion: Alameda
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Alameda
+  - Bicentenario
+  Estacion: San Juan de Dios
+  Lineas:
+  - Mi Macro Calzada
+  - Linea 2
+- Conexiones:
+  - San Juan de Dios
+  - La Paz
+  Estacion: Bicentenario
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Bicentenario
+  - Ninos Heroes
+  Estacion: La Paz
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - La Paz
+  - Agua Azul
+  Estacion: Ninos Heroes
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Ninos Heroes
+  - Cipres
+  Estacion: Agua Azul
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Agua Azul
+  - Heroes de Nacozari
+  Estacion: Cipres
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Cipres
+  - Lazaro Cardenas
+  Estacion: Heroes de Nacozari
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Heroes de Nacozari
+  - El Dean
+  Estacion: Lazaro Cardenas
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Lazaro Cardenas
+  - Zona Industrial
+  Estacion: El Dean
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - El Dean
+  - Lopez de Legazpi
+  Estacion: Zona Industrial
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Zona Industrial
+  - Clemente Orozco
+  Estacion: Lopez de Legazpi
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Lopez de Legazpi
+  - Artes Plasticas
+  Estacion: Clemente Orozco
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Clemente Orozco
+  - Esculturas
+  Estacion: Artes Plasticas
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Artes Plasticas
+  - Fray Angelico
+  Estacion: Esculturas
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Esculturas
+  - Las Juntas
+  Estacion: Fray Angelico
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Fray Angelico
+  - ''
+  Estacion: Las Juntas
+  Lineas:
+  - Mi Macro Calzada
+- Conexiones:
+  - Huentitán
+  - Zoológico
+  Estacion: Mirador
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Mirador
+  - Zoológico
+  Estacion: Huentitán
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Huentitán
+  - Independencia Norte
+  Estacion: Zoológico
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Zoológico
+  - San Patricio
+  Estacion: Independencia Norte
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Independencia Norte
+  - Igualdad
+  Estacion: San Patricio
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - San Patricio
+  - Monumental
+  Estacion: Igualdad
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Igualdad
+  - Monte Olivete
+  Estacion: Monumental
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Monumental
+  - Ciencias de la Salud
+  Estacion: Monte Olivete
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Monte Olivete
+  - Juan Álvarez
+  Estacion: Ciencias de la Salud
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Ciencias de la Salud
+  - Alameda
+  Estacion: Juan Álvarez
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Juan Álvarez
+  - San Juan de Dios
+  Estacion: Alameda
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - San Juan de Dios
+  - La Paz
+  Estacion: Bicentenario
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Bicentenario
+  - Niños Héroes
+  Estacion: La Paz
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - La Paz
+  - Agua Azul
+  Estacion: Niños Héroes
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Niños Héroes
+  - Ciprés
+  Estacion: Agua Azul
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Agua Azul
+  - Héroes de Nacozari
+  Estacion: Ciprés
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Ciprés
+  - Lázaro Cárdenas
+  Estacion: Héroes de Nacozari
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Héroes de Nacozari
+  - El Deán
+  Estacion: Lázaro Cárdenas
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Lázaro Cárdenas
+  - Zona Industrial
+  Estacion: El Deán
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - El Deán
+  - López de Legazpi
+  Estacion: Zona Industrial
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Zona Industrial
+  - Clemente Orozco
+  Estacion: López de Legazpi
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - López de Legazpi
+  - Artes Plásticas
+  Estacion: Clemente Orozco
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Clemente Orozco
+  - Esculturas
+  Estacion: Artes Plásticas
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Artes Plásticas
+  - Fray Angélico
+  Estacion: Esculturas
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Esculturas
+  - Las Juntas
+  Estacion: Fray Angélico
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Fray Angélico
+  - ''
+  Estacion: Las Juntas
+  Lineas:
+  - Mi Macro Periférico
+- Conexiones:
+  - Prueba
+  - Prueba3
+  Estacion: Prueba1
+  Lineas:
+  - Linea P
