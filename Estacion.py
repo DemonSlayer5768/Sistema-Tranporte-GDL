@@ -6,7 +6,9 @@ class Nodo:
         self.estacion = estacion
         self.next = None
         self.anterior = None
-        self.conexiones = [] 
+        self.conexiones = []
+    def __lt__(self, other):
+        return self.estacion.nombre < other.estacion.nombre
 
 class Estacion:
     def __init__(self, nombre, lineas, conexiones):
@@ -21,6 +23,7 @@ class GrafoTransporte:
         self.Head = None
         self.cola = None
         self.LoadFromYAML("STPMG.yaml")
+        
 
     def get_all_estaciones(self):
         estaciones = []

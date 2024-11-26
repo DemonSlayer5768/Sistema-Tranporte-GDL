@@ -72,12 +72,14 @@ class TransporteApp(QtWidgets.QMainWindow):
             # Llama a la función AlgoritmosOrdenamiento.recibirDatos solo si el botón está marcado
         if self.sender().isChecked():
             boton_nombre = self.sender().objectName() 
-            if boton_nombre in ['Anchura', 'Kruskal', 'Dijkstra']:  # Corregido la condición
+            if boton_nombre in ['Anchura', 'Kruskal', 'Dijkstra', 'Prim']:  # Corregido la condición
                 EstacionP = self.cmb_EstacionP.currentText()  # Obtener el texto seleccionado
                 EstacionD = self.cmb_EstacionD.currentText()  # Obtener el texto seleccionado
-                # print("Entro en búsqueda", boton_nombre)
+                ListView_Recorrido = self.listView_Recorrido 
+            
                 # Pasar las estaciones seleccionadas a la función tipo_Algoritmo
-                AlgoritmosBusqueda.tipo_Algoritmo(EstacionP, EstacionD, boton_nombre)
+                if EstacionP and EstacionD:
+                    AlgoritmosBusqueda.tipo_Algoritmo(EstacionP, EstacionD, boton_nombre,ListView_Recorrido)
             else:
                 AlgoritmosOrdenamiento.recibirDatos(
                     self.cmb_OrdenarLineas, 
@@ -130,8 +132,10 @@ class TransporteApp(QtWidgets.QMainWindow):
             # Pasar los valores del ComboBox a la función
             EstacionP = self.cmb_EstacionP
             EstacionD = self.cmb_EstacionD
+            ListView_Recorrido = self.listView_Recorrido 
+            
 
-            AlgoritmosBusqueda.cargar_Estaciones(EstacionP,EstacionD)
+            AlgoritmosBusqueda.cargar_Estaciones(EstacionP,EstacionD,ListView_Recorrido)
             
             
             
