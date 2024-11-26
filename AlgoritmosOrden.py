@@ -78,6 +78,7 @@ class AlgoritmosOrdenamiento:
             estaciones[j + 1] = clave
         fin = time.time()
         print(f"Tiempo de ejecución (Inserción): {fin - inicio:.6f} segundos")
+        txt_Time.clear()
         txt_Time.append(f"{fin - inicio:.6f} segundos")
         return estaciones
 
@@ -92,6 +93,7 @@ class AlgoritmosOrdenamiento:
                     estaciones[j], estaciones[j + 1] = estaciones[j + 1], estaciones[j]
         fin = time.time()
         print(f"Tiempo de ejecución (Burbuja): {fin - inicio:.6f} segundos")
+        txt_Time.clear()
         txt_Time.append(f"{fin - inicio:.6f} segundos")
         return estaciones
 
@@ -108,6 +110,7 @@ class AlgoritmosOrdenamiento:
             estaciones[i], estaciones[min_idx] = estaciones[min_idx], estaciones[i]
         fin = time.time()
         print(f"Tiempo de ejecución {fin - inicio:.6f} segundos")
+        txt_Time.clear()
         txt_Time.append(f"{fin - inicio:.6f} segundos")
         return estaciones
 
@@ -148,6 +151,7 @@ class AlgoritmosOrdenamiento:
         merge_sort(estaciones)
         fin = time.time()
         print(f"Tiempo de ejecución (Mezcla): {fin - inicio:.6f} segundos")
+        txt_Time.clear()
         txt_Time.append(f"{fin - inicio:.6f} segundos")
         
         return estaciones
@@ -168,6 +172,7 @@ class AlgoritmosOrdenamiento:
 
         resultado = quick_sort(estaciones)
         fin = time.time()
-        # print(f"Tiempo de ejecución (Rápido): {fin - inicio:.6f} segundos")
+        print(f"Tiempo de ejecución (Rápido): {fin - inicio:.6f} segundos")
+        txt_Time.clear()
         txt_Time.append(f"{fin - inicio:.6f} segundos")
         return resultado

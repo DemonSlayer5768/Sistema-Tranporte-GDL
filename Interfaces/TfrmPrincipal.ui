@@ -621,30 +621,10 @@
          <string>Recorrer Estaciónes</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="cmb_EstacionP">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>134</y>
-          <width>221</width>
-          <height>21</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="cmb_EstacionD">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>210</y>
-          <width>221</width>
-          <height>21</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_10">
         <property name="geometry">
          <rect>
-          <x>16</x>
+          <x>20</x>
           <y>108</y>
           <width>231</width>
           <height>21</height>
@@ -664,7 +644,7 @@
        <widget class="QLabel" name="label_11">
         <property name="geometry">
          <rect>
-          <x>18</x>
+          <x>20</x>
           <y>189</y>
           <width>231</width>
           <height>16</height>
@@ -727,7 +707,7 @@
        <widget class="QRadioButton" name="rBtn_Anchura">
         <property name="geometry">
          <rect>
-          <x>302</x>
+          <x>305</x>
           <y>146</y>
           <width>82</width>
           <height>17</height>
@@ -737,11 +717,11 @@
          <string>Anchura</string>
         </property>
        </widget>
-       <widget class="QRadioButton" name="rBtn_Kruskal">
+       <widget class="QRadioButton" name="rBtn_kruskal">
         <property name="geometry">
          <rect>
-          <x>303</x>
-          <y>176</y>
+          <x>305</x>
+          <y>199</y>
           <width>82</width>
           <height>17</height>
          </rect>
@@ -750,17 +730,56 @@
          <string>Kruskal</string>
         </property>
        </widget>
-       <widget class="QRadioButton" name="rBtn_Djstra">
+       <widget class="QRadioButton" name="rBtn_Dijkstra">
         <property name="geometry">
          <rect>
-          <x>303</x>
-          <y>208</y>
+          <x>305</x>
+          <y>223</y>
           <width>82</width>
           <height>17</height>
          </rect>
         </property>
         <property name="text">
          <string>Djstra</string>
+        </property>
+       </widget>
+       <widget class="QFontComboBox" name="cmb_EstacionP">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>132</y>
+          <width>221</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QFontComboBox" name="cmb_EstacionD">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>213</y>
+          <width>221</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="rBtn_Prim">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>172</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Prim</string>
         </property>
        </widget>
       </widget>
